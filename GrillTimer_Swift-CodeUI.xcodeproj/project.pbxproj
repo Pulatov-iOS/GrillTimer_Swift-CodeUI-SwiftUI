@@ -9,23 +9,27 @@
 /* Begin PBXBuildFile section */
 		1162BA852B7AA4E300CBFD68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BA842B7AA4E300CBFD68 /* AppDelegate.swift */; };
 		1162BA872B7AA4E300CBFD68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BA862B7AA4E300CBFD68 /* SceneDelegate.swift */; };
-		1162BA892B7AA4E300CBFD68 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BA882B7AA4E300CBFD68 /* ViewController.swift */; };
-		1162BA8C2B7AA4E300CBFD68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1162BA8A2B7AA4E300CBFD68 /* Main.storyboard */; };
 		1162BA8F2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1162BA8D2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodeld */; };
 		1162BA912B7AA4E500CBFD68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1162BA902B7AA4E500CBFD68 /* Assets.xcassets */; };
 		1162BA942B7AA4E500CBFD68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1162BA922B7AA4E500CBFD68 /* LaunchScreen.storyboard */; };
+		1162BAC32B7CF39C00CBFD68 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC22B7CF39C00CBFD68 /* Coordinator.swift */; };
+		1162BAC62B7CF44F00CBFD68 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC52B7CF44F00CBFD68 /* MainView.swift */; };
+		1162BAC82B7CF45E00CBFD68 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */; };
+		1162BACD2B7CF8F900CBFD68 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1162BACC2B7CF8F900CBFD68 /* SnapKit */; };
+		1162BACF2B7CF8F900CBFD68 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1162BACE2B7CF8F900CBFD68 /* SnapKit-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1162BA812B7AA4E300CBFD68 /* GrillTimer_Swift-CodeUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GrillTimer_Swift-CodeUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1162BA842B7AA4E300CBFD68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1162BA862B7AA4E300CBFD68 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1162BA882B7AA4E300CBFD68 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1162BA8B2B7AA4E300CBFD68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1162BA8E2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GrillTimer_Swift_CodeUI.xcdatamodel; sourceTree = "<group>"; };
 		1162BA902B7AA4E500CBFD68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1162BA932B7AA4E500CBFD68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1162BA952B7AA4E500CBFD68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1162BAC22B7CF39C00CBFD68 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		1162BAC52B7CF44F00CBFD68 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1162BACD2B7CF8F900CBFD68 /* SnapKit in Frameworks */,
+				1162BACF2B7CF8F900CBFD68 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,16 +64,25 @@
 		1162BA832B7AA4E300CBFD68 /* GrillTimer_Swift-CodeUI */ = {
 			isa = PBXGroup;
 			children = (
+				1162BAC22B7CF39C00CBFD68 /* Coordinator.swift */,
+				1162BAC42B7CF43A00CBFD68 /* Main */,
 				1162BA842B7AA4E300CBFD68 /* AppDelegate.swift */,
 				1162BA862B7AA4E300CBFD68 /* SceneDelegate.swift */,
-				1162BA882B7AA4E300CBFD68 /* ViewController.swift */,
-				1162BA8A2B7AA4E300CBFD68 /* Main.storyboard */,
 				1162BA902B7AA4E500CBFD68 /* Assets.xcassets */,
 				1162BA922B7AA4E500CBFD68 /* LaunchScreen.storyboard */,
 				1162BA952B7AA4E500CBFD68 /* Info.plist */,
 				1162BA8D2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodeld */,
 			);
 			path = "GrillTimer_Swift-CodeUI";
+			sourceTree = "<group>";
+		};
+		1162BAC42B7CF43A00CBFD68 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1162BAC52B7CF44F00CBFD68 /* MainView.swift */,
+				1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +101,10 @@
 			dependencies = (
 			);
 			name = "GrillTimer_Swift-CodeUI";
+			packageProductDependencies = (
+				1162BACC2B7CF8F900CBFD68 /* SnapKit */,
+				1162BACE2B7CF8F900CBFD68 /* SnapKit-Dynamic */,
+			);
 			productName = "GrillTimer_Swift-CodeUI";
 			productReference = 1162BA812B7AA4E300CBFD68 /* GrillTimer_Swift-CodeUI.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +133,9 @@
 				Base,
 			);
 			mainGroup = 1162BA782B7AA4E300CBFD68;
+			packageReferences = (
+				1162BACB2B7CF8F900CBFD68 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 1162BA822B7AA4E300CBFD68 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -130,7 +152,6 @@
 			files = (
 				1162BA942B7AA4E500CBFD68 /* LaunchScreen.storyboard in Resources */,
 				1162BA912B7AA4E500CBFD68 /* Assets.xcassets in Resources */,
-				1162BA8C2B7AA4E300CBFD68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,9 +162,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1162BA892B7AA4E300CBFD68 /* ViewController.swift in Sources */,
+				1162BAC32B7CF39C00CBFD68 /* Coordinator.swift in Sources */,
+				1162BAC82B7CF45E00CBFD68 /* MainViewModel.swift in Sources */,
 				1162BA852B7AA4E300CBFD68 /* AppDelegate.swift in Sources */,
 				1162BA872B7AA4E300CBFD68 /* SceneDelegate.swift in Sources */,
+				1162BAC62B7CF44F00CBFD68 /* MainView.swift in Sources */,
 				1162BA8F2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,14 +174,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1162BA8A2B7AA4E300CBFD68 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1162BA8B2B7AA4E300CBFD68 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1162BA922B7AA4E500CBFD68 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -301,7 +316,6 @@
 				INFOPLIST_FILE = "GrillTimer_Swift-CodeUI/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -329,7 +343,6 @@
 				INFOPLIST_FILE = "GrillTimer_Swift-CodeUI/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -367,6 +380,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1162BACB2B7CF8F900CBFD68 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1162BACC2B7CF8F900CBFD68 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1162BACB2B7CF8F900CBFD68 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		1162BACE2B7CF8F900CBFD68 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1162BACB2B7CF8F900CBFD68 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		1162BA8D2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodeld */ = {
