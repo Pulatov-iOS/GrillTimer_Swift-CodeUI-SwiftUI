@@ -46,7 +46,7 @@ final class DefaultMainView: UIViewController {
         grillTableView.allowsSelection = false
         grillTableView.showsVerticalScrollIndicator = false
         grillTableView.backgroundColor = .clear
-//        grillTableView.register(.self, forCellReuseIdentifier: "CustomCell")
+        grillTableView.register(MainTableViewCell.self, forCellReuseIdentifier: "CustomCell")
     }
 }
 
@@ -63,9 +63,17 @@ extension DefaultMainView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cellId")
-        cell.textLabel?.text = "1"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! MainTableViewCell
+        cell.delegate = self
+        cell.setInformation()
         return cell
     }
+}
+
+// MARK: - MainTableViewCellDelegate
+extension DefaultMainView: MainTableViewCellDelegate {
     
+    func didSelectCell(_ cell: MainTableViewCell) {
+         
+    }
 }

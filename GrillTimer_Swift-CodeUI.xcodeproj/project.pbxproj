@@ -17,6 +17,7 @@
 		1162BAC82B7CF45E00CBFD68 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */; };
 		1162BACD2B7CF8F900CBFD68 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1162BACC2B7CF8F900CBFD68 /* SnapKit */; };
 		1162BACF2B7CF8F900CBFD68 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1162BACE2B7CF8F900CBFD68 /* SnapKit-Dynamic */; };
+		1162BAD32B7E55A400CBFD68 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAD22B7E55A400CBFD68 /* MainTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		1162BAC22B7CF39C00CBFD68 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1162BAC52B7CF44F00CBFD68 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		1162BAD22B7E55A400CBFD68 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				1162BAC52B7CF44F00CBFD68 /* MainView.swift */,
 				1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */,
+				1162BAD22B7E55A400CBFD68 /* MainTableViewCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				1162BAC32B7CF39C00CBFD68 /* Coordinator.swift in Sources */,
 				1162BAC82B7CF45E00CBFD68 /* MainViewModel.swift in Sources */,
 				1162BA852B7AA4E300CBFD68 /* AppDelegate.swift in Sources */,
+				1162BAD32B7E55A400CBFD68 /* MainTableViewCell.swift in Sources */,
 				1162BA872B7AA4E300CBFD68 /* SceneDelegate.swift in Sources */,
 				1162BAC62B7CF44F00CBFD68 /* MainView.swift in Sources */,
 				1162BA8F2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodeld in Sources */,
