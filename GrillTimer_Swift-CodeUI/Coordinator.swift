@@ -14,6 +14,8 @@ final class Coordinator {
     
     private func showMainScreen() {
         let view = DefaultMainView()
+        let viewModel = DefaultMainViewModel()
+        view.viewModel = viewModel
         rootNavigationController.pushViewController(view, animated: true)
     }
 }

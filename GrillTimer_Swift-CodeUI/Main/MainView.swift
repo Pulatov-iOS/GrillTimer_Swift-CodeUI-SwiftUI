@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 import SnapKit
 
 protocol MainView: AnyObject {
@@ -12,6 +13,9 @@ final class DefaultMainView: UIViewController {
     var viewModel: MainViewModel!
     
     // MARK: Private
+    private let disposeBag = DisposeBag()
+    private var dishes: [Dish]?
+    
     private let grillTableView = UITableView()
     
     // MARK: - LyfeCycle
@@ -22,6 +26,7 @@ final class DefaultMainView: UIViewController {
         configureConstraints()
         configureUI()
         setupTableView()
+        configureBindings()
     }
     
     // MARK: - Helpers
@@ -48,6 +53,17 @@ final class DefaultMainView: UIViewController {
         grillTableView.backgroundColor = .clear
         grillTableView.register(MainTableViewCell.self, forCellReuseIdentifier: "CustomCell")
     }
+    
+    private func configureBindings() {
+        viewModel.fetchDishes()
+        viewModel.dishes
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] dishes in
+                self?.dishes = dishes
+                self?.grillTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - MainView
@@ -59,13 +75,15 @@ extension DefaultMainView: MainView {
 extension DefaultMainView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return dishes?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! MainTableViewCell
-        cell.delegate = self
-        cell.setInformation()
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! MainTableViewCell
+//        cell.delegate = self
+//        cell.setInformation()
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "ddw")
+        cell.textLabel?.text = dishes?[indexPath.row].name
         return cell
     }
 }

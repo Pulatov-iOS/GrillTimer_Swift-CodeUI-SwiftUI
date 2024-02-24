@@ -3,7 +3,8 @@ import RxSwift
 import RxCocoa
 
 protocol MainViewModel: AnyObject {
-    
+    var dishes: Observable<[Dish]> { get }
+    func fetchDishes()
 }
 
 final class DefaultMainViewModel {
@@ -12,22 +13,11 @@ final class DefaultMainViewModel {
     // MARK: Public
     
     // MARK: Private
-  //  private let dataManager = DataManager.instanse
     private let disposeBag = DisposeBag()
     
     private var dishRelay = BehaviorRelay<[Dish]>(value: [])
-       var cars: Observable<[Dish]> {
-           return dishRelay.asObservable()
-       }
     
     // MARK: - API
-    func fetchDishes() {
-        DataManager.instanse.fetchDishes()
-            .subscribe(onNext: { [weak self] dishes in
-                self?.dishRelay.accept(dishes)
-            })
-            .disposed(by: disposeBag)
-    }
     
     // MARK: - Helpers
 }
@@ -35,4 +25,17 @@ final class DefaultMainViewModel {
 // MARK: - MainViewModel
 extension DefaultMainViewModel: MainViewModel {
     
+    var dishes: Observable<[Dish]> {
+        return dishRelay.asObservable()
+    }
+    
+    func fetchDishes() {
+        DataManager.instanse.fetchDishes()
+            .subscribe(onNext: { [weak self] dishes in
+                self?.dishRelay.accept(dishes)
+            }, onError: { error in
+                // Обработка ошибок при получении данных из Firestore
+            })
+            .disposed(by: disposeBag)
+    }
 }
