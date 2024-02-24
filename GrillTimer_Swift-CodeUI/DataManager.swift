@@ -12,7 +12,6 @@ final class DataManager {
     private init(){ }
     
     let db = Firestore.firestore()
-    
     private let pathDishes = "Dish"
 
     

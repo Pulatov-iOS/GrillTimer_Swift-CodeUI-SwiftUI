@@ -79,11 +79,11 @@ extension DefaultMainView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! MainTableViewCell
-//        cell.delegate = self
-//        cell.setInformation()
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "ddw")
-        cell.textLabel?.text = dishes?[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! MainTableViewCell
+        cell.delegate = self
+        if let dish = dishes?[indexPath.row] {
+            cell.setInformation(dish)
+        }
         return cell
     }
 }

@@ -14,6 +14,7 @@ final class MainTableViewCell: UITableViewCell {
     // MARK: Private
     private let containerView = UIView()
     private let mainImageView = UIImageView()
+    private let nameLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,6 +32,7 @@ final class MainTableViewCell: UITableViewCell {
     private func addSubviews() {
         addSubview(containerView)
         containerView.addSubview(mainImageView)
+        containerView.addSubview(nameLabel)
     }
     
     private func configureConstraints() {
@@ -45,6 +47,11 @@ final class MainTableViewCell: UITableViewCell {
             make.width.equalTo(100)
             make.height.equalTo(100)
         }
+        
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(15)
+            make.leading.equalTo(mainImageView.snp.trailing).offset(15)
+        }
     }
     
     private func configureUI() {
@@ -53,8 +60,8 @@ final class MainTableViewCell: UITableViewCell {
         mainImageView.backgroundColor = .black
     }
     
-    func setInformation() {
-       
+    func setInformation(_ dish: Dish) {
+        nameLabel.text = dish.name
     }
     
     private func cellTappedHandler() {
