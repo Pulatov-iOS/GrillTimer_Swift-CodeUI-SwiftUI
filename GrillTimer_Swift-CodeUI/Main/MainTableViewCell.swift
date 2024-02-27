@@ -15,6 +15,9 @@ final class MainTableViewCell: UITableViewCell {
     private let containerView = UIView()
     private let mainImageView = UIImageView()
     private let nameLabel = UILabel()
+    private let meatTypeLabel = UILabel()
+    private let averageCookingTimesLabel = UILabel()
+    private let favoriteButton = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,8 +34,7 @@ final class MainTableViewCell: UITableViewCell {
     
     private func addSubviews() {
         addSubview(containerView)
-        containerView.addSubview(mainImageView)
-        containerView.addSubview(nameLabel)
+        containerView.addSubviews([mainImageView, nameLabel, meatTypeLabel, averageCookingTimesLabel, favoriteButton])
     }
     
     private func configureConstraints() {
@@ -52,16 +54,49 @@ final class MainTableViewCell: UITableViewCell {
             make.top.equalToSuperview().offset(15)
             make.leading.equalTo(mainImageView.snp.trailing).offset(15)
         }
+        
+        meatTypeLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(30)
+            make.leading.equalTo(mainImageView.snp.trailing).offset(15)
+            make.trailing.equalToSuperview().offset(-15)
+        }
+        
+        averageCookingTimesLabel.snp.makeConstraints { make in
+            make.leading.equalTo(mainImageView.snp.trailing).offset(15)
+            make.trailing.equalToSuperview().offset(-15)
+            make.bottom.equalToSuperview().offset(-15)
+        }
+        
+        favoriteButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(15)
+            make.trailing.equalTo(containerView.snp.trailing).offset(-15)
+            make.width.equalTo(30)
+            make.height.equalTo(33)
+        }
     }
     
     private func configureUI() {
-        containerView.backgroundColor = .red
+        containerView.backgroundColor = UIColor(resource: .cellBackground)
         containerView.layer.cornerRadius = 8
+        containerView.layer.shadowColor = UIColor(resource: .cellShadow).cgColor // Вопрос
+        containerView.layer.shadowOpacity = 0.5
+        containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        containerView.layer.shadowRadius = 4
+        
         mainImageView.backgroundColor = .black
+        
+        nameLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        
+        if let image = UIImage(systemName: "bookmark")?.withRenderingMode(.alwaysTemplate) {
+            favoriteButton.image = image
+        }
+        favoriteButton.tintColor = .black
     }
     
     func setInformation(_ dish: Dish) {
         nameLabel.text = dish.name
+        meatTypeLabel.text = "Meat: \(dish.meatTypes.joined(separator: ", "))"
+        averageCookingTimesLabel.text = "Avg. times: \(dish.averageCookingTimes) min"
     }
     
     private func cellTappedHandler() {

@@ -1,6 +1,7 @@
 import RxSwift
 import RxCocoa
 import FirebaseFirestore
+import FirebaseStorage
 
 enum DataError: Error {
     case error(String)
@@ -11,7 +12,8 @@ final class DataManager {
     static let instanse = DataManager()
     private init(){ }
     
-    let db = Firestore.firestore()
+    private let db = Firestore.firestore()
+    private let storage = Storage.storage()
     private let pathDishes = "Dish"
 
     

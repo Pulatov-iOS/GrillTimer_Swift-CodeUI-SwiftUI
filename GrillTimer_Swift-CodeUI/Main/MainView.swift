@@ -41,7 +41,12 @@ final class DefaultMainView: UIViewController {
     }
     
     private func configureUI() {
+        view.backgroundColor = UIColor(resource: .viewBackground)
         
+        let titleLabel = UILabel()
+        titleLabel.text = "Dishes"
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        self.navigationItem.titleView = titleLabel
     }
     
     private func setupTableView() {

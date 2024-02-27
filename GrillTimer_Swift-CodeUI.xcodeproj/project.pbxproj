@@ -37,6 +37,7 @@
 		119924242B89D30E00EC7DF0 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 119924232B89D30E00EC7DF0 /* FirebaseFirestoreSwift */; };
 		119924262B89D30E00EC7DF0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 119924252B89D30E00EC7DF0 /* FirebaseStorage */; };
 		1199246E2B8A014900EC7DF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1199246D2B8A014900EC7DF0 /* GoogleService-Info.plist */; };
+		1199249A2B8E04A000EC7DF0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119924992B8E04A000EC7DF0 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		1162BAE92B7E600E00CBFD68 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		1162BAEC2B7E60B200CBFD68 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1199246D2B8A014900EC7DF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		119924992B8E04A000EC7DF0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				1162BAC22B7CF39C00CBFD68 /* Coordinator.swift */,
+				119924962B8E03EE00EC7DF0 /* Extension */,
 				1162BAEB2B7E601500CBFD68 /* Models */,
 				1162BAC42B7CF43A00CBFD68 /* Main */,
 				1162BA842B7AA4E300CBFD68 /* AppDelegate.swift */,
@@ -125,6 +128,7 @@
 				1162BAC52B7CF44F00CBFD68 /* MainView.swift */,
 				1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */,
 				1162BAD22B7E55A400CBFD68 /* MainTableViewCell.swift */,
+				1199249B2B8E0B6C00EC7DF0 /* Dish */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -135,6 +139,21 @@
 				1162BAE92B7E600E00CBFD68 /* Dish.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		119924962B8E03EE00EC7DF0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				119924992B8E04A000EC7DF0 /* UIViewExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		1199249B2B8E0B6C00EC7DF0 /* Dish */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Dish;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1199249A2B8E04A000EC7DF0 /* UIViewExtension.swift in Sources */,
 				1162BAC32B7CF39C00CBFD68 /* Coordinator.swift in Sources */,
 				1162BAC82B7CF45E00CBFD68 /* MainViewModel.swift in Sources */,
 				1162BA852B7AA4E300CBFD68 /* AppDelegate.swift in Sources */,
