@@ -39,7 +39,7 @@ final class DefaultMainViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = UIColor(resource: .mainViewBackground)
+        view.backgroundColor = UIColor(resource: .Color.mainViewBackground)
         
         let titleLabel = UILabel()
         titleLabel.text = "Dishes"
@@ -60,7 +60,7 @@ final class DefaultMainViewController: UIViewController {
     private func bindings() {
         viewModel.dishesSubject.sink { error in
             print(error)
-        } receiveValue: { [weak self] in
+        } receiveValue: { [weak self] _ in
             self?.grillTableView.reloadData()
         }
         .store(in: &cancellables)

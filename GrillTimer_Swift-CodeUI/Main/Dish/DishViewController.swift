@@ -46,7 +46,7 @@ final class DefaultDishViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = UIColor(resource: .dishViewBackground)
+        view.backgroundColor = UIColor(resource: .Color.dishViewBackground)
         
         mainImageView.backgroundColor = .black
     }
