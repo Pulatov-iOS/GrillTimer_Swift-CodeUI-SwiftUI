@@ -1,22 +1,20 @@
 import UIKit
-import RxSwift
 import SnapKit
+import Combine
 
-protocol MainView: AnyObject {
+protocol MainViewController: AnyObject {
     
 }
 
-final class DefaultMainView: UIViewController {
+final class DefaultMainViewController: UIViewController {
 
     // MARK: - Properties
     // MARK: Public
     var viewModel: MainViewModel!
     
     // MARK: Private
-    private let disposeBag = DisposeBag()
-    private var dishes: [Dish]?
-    
     private let grillTableView = UITableView()
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - LyfeCycle
     override func viewDidLoad() {
@@ -26,7 +24,7 @@ final class DefaultMainView: UIViewController {
         configureConstraints()
         configureUI()
         setupTableView()
-        configureBindings()
+        bindings()
     }
     
     // MARK: - Helpers
@@ -41,7 +39,7 @@ final class DefaultMainView: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = UIColor(resource: .viewBackground)
+        view.backgroundColor = UIColor(resource: .mainViewBackground)
         
         let titleLabel = UILabel()
         titleLabel.text = "Dishes"
@@ -59,44 +57,43 @@ final class DefaultMainView: UIViewController {
         grillTableView.register(MainTableViewCell.self, forCellReuseIdentifier: "CustomCell")
     }
     
-    private func configureBindings() {
-        viewModel.fetchDishes()
-        viewModel.dishes
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] dishes in
-                self?.dishes = dishes
-                self?.grillTableView.reloadData()
-            })
-            .disposed(by: disposeBag)
+    private func bindings() {
+        viewModel.dishesSubject.sink { error in
+            print(error)
+        } receiveValue: { [weak self] in
+            self?.grillTableView.reloadData()
+        }
+        .store(in: &cancellables)
     }
 }
 
 // MARK: - MainView
-extension DefaultMainView: MainView {
+extension DefaultMainViewController: MainViewController {
     
 }
 
 // MARK: - TableViewDelegate/DataSource
-extension DefaultMainView: UITableViewDelegate, UITableViewDataSource {
+extension DefaultMainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dishes?.count ?? 0
+        return viewModel.dishesSubject.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! MainTableViewCell
         cell.delegate = self
-        if let dish = dishes?[indexPath.row] {
-            cell.setInformation(dish)
-        }
+        let dish = viewModel.dishesSubject.value[indexPath.row]
+        cell.setInformation(dish)
         return cell
     }
 }
 
 // MARK: - MainTableViewCellDelegate
-extension DefaultMainView: MainTableViewCellDelegate {
+extension DefaultMainViewController: MainTableViewCellDelegate {
     
     func didSelectCell(_ cell: MainTableViewCell) {
-         
+        guard let indexPath = grillTableView.indexPath(for: cell) else { return }
+        let dish = viewModel.dishesSubject.value[indexPath.row]
+        viewModel.tableCellTapped(dish)
     }
 }

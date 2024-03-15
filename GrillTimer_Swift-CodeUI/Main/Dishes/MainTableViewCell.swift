@@ -33,7 +33,7 @@ final class MainTableViewCell: UITableViewCell {
     }
     
     private func addSubviews() {
-        addSubview(containerView)
+        contentView.addSubview(containerView)
         containerView.addSubviews([mainImageView, nameLabel, meatTypeLabel, averageCookingTimesLabel, favoriteButton])
     }
     
@@ -76,9 +76,9 @@ final class MainTableViewCell: UITableViewCell {
     }
     
     private func configureUI() {
-        containerView.backgroundColor = UIColor(resource: .cellBackground)
+        containerView.backgroundColor = UIColor(resource: .mainCellBackground)
         containerView.layer.cornerRadius = 8
-        containerView.layer.shadowColor = UIColor(resource: .cellShadow).cgColor // Вопрос
+        containerView.layer.shadowColor = UIColor(resource: .mainCellShadow).cgColor // Вопрос
         containerView.layer.shadowOpacity = 0.5
         containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
         containerView.layer.shadowRadius = 4
@@ -105,6 +105,6 @@ final class MainTableViewCell: UITableViewCell {
     }
     
     @objc private func cellTapped() {
-         delegate?.didSelectCell(self)
+        delegate?.didSelectCell(self)
     }
 }

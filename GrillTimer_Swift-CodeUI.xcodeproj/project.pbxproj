@@ -13,20 +13,13 @@
 		1162BA912B7AA4E500CBFD68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1162BA902B7AA4E500CBFD68 /* Assets.xcassets */; };
 		1162BA942B7AA4E500CBFD68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1162BA922B7AA4E500CBFD68 /* LaunchScreen.storyboard */; };
 		1162BAC32B7CF39C00CBFD68 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC22B7CF39C00CBFD68 /* Coordinator.swift */; };
-		1162BAC62B7CF44F00CBFD68 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC52B7CF44F00CBFD68 /* MainView.swift */; };
+		1162BAC62B7CF44F00CBFD68 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC52B7CF44F00CBFD68 /* MainViewController.swift */; };
 		1162BAC82B7CF45E00CBFD68 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */; };
 		1162BACD2B7CF8F900CBFD68 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1162BACC2B7CF8F900CBFD68 /* SnapKit */; };
 		1162BACF2B7CF8F900CBFD68 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1162BACE2B7CF8F900CBFD68 /* SnapKit-Dynamic */; };
 		1162BAD32B7E55A400CBFD68 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAD22B7E55A400CBFD68 /* MainTableViewCell.swift */; };
 		1162BAEA2B7E600E00CBFD68 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAE92B7E600E00CBFD68 /* Dish.swift */; };
-		1162BAED2B7E60B200CBFD68 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAEC2B7E60B200CBFD68 /* DataManager.swift */; };
-		119924052B89D28300EC7DF0 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 119924042B89D28300EC7DF0 /* RxBlocking */; };
-		119924072B89D28300EC7DF0 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 119924062B89D28300EC7DF0 /* RxBlocking-Dynamic */; };
-		119924092B89D28300EC7DF0 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 119924082B89D28300EC7DF0 /* RxCocoa */; };
-		1199240B2B89D28300EC7DF0 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1199240A2B89D28300EC7DF0 /* RxCocoa-Dynamic */; };
-		1199240D2B89D28300EC7DF0 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 1199240C2B89D28300EC7DF0 /* RxRelay */; };
-		1199240F2B89D28300EC7DF0 /* RxRelay-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1199240E2B89D28300EC7DF0 /* RxRelay-Dynamic */; };
-		119924112B89D28300EC7DF0 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 119924102B89D28300EC7DF0 /* RxSwift */; };
+		1162BAED2B7E60B200CBFD68 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAEC2B7E60B200CBFD68 /* FirebaseManager.swift */; };
 		119924162B89D30E00EC7DF0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 119924152B89D30E00EC7DF0 /* FirebaseAnalytics */; };
 		119924182B89D30E00EC7DF0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 119924172B89D30E00EC7DF0 /* FirebaseAuth */; };
 		1199241A2B89D30E00EC7DF0 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 119924192B89D30E00EC7DF0 /* FirebaseAuthCombine-Community */; };
@@ -37,7 +30,16 @@
 		119924242B89D30E00EC7DF0 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 119924232B89D30E00EC7DF0 /* FirebaseFirestoreSwift */; };
 		119924262B89D30E00EC7DF0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 119924252B89D30E00EC7DF0 /* FirebaseStorage */; };
 		1199246E2B8A014900EC7DF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1199246D2B8A014900EC7DF0 /* GoogleService-Info.plist */; };
-		1199249A2B8E04A000EC7DF0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119924992B8E04A000EC7DF0 /* UIViewExtension.swift */; };
+		1199249A2B8E04A000EC7DF0 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119924992B8E04A000EC7DF0 /* UIView + Extension.swift */; };
+		1199249D2B8E0C4A00EC7DF0 /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199249C2B8E0C4A00EC7DF0 /* DishViewController.swift */; };
+		1199249F2B8E0C5800EC7DF0 /* DishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199249E2B8E0C5800EC7DF0 /* DishViewModel.swift */; };
+		119924A22B8E1C8C00EC7DF0 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 119924A12B8E1C8C00EC7DF0 /* RxBlocking */; };
+		119924A42B8E1C8C00EC7DF0 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 119924A32B8E1C8C00EC7DF0 /* RxBlocking-Dynamic */; };
+		119924A62B8E1C8D00EC7DF0 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 119924A52B8E1C8D00EC7DF0 /* RxCocoa */; };
+		119924A82B8E1C8D00EC7DF0 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 119924A72B8E1C8D00EC7DF0 /* RxCocoa-Dynamic */; };
+		119924AA2B8E1C8D00EC7DF0 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 119924A92B8E1C8D00EC7DF0 /* RxRelay */; };
+		119924AC2B8E1C8D00EC7DF0 /* RxRelay-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 119924AB2B8E1C8D00EC7DF0 /* RxRelay-Dynamic */; };
+		119924AE2B8E1C8D00EC7DF0 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 119924AD2B8E1C8D00EC7DF0 /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,13 +51,15 @@
 		1162BA932B7AA4E500CBFD68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1162BA952B7AA4E500CBFD68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1162BAC22B7CF39C00CBFD68 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		1162BAC52B7CF44F00CBFD68 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		1162BAC52B7CF44F00CBFD68 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		1162BAD22B7E55A400CBFD68 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		1162BAE92B7E600E00CBFD68 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
-		1162BAEC2B7E60B200CBFD68 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1162BAEC2B7E60B200CBFD68 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		1199246D2B8A014900EC7DF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		119924992B8E04A000EC7DF0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		119924992B8E04A000EC7DF0 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		1199249C2B8E0C4A00EC7DF0 /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
+		1199249E2B8E0C5800EC7DF0 /* DishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,23 +67,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				119924112B89D28300EC7DF0 /* RxSwift in Frameworks */,
+				119924AE2B8E1C8D00EC7DF0 /* RxSwift in Frameworks */,
 				119924242B89D30E00EC7DF0 /* FirebaseFirestoreSwift in Frameworks */,
-				1199240F2B89D28300EC7DF0 /* RxRelay-Dynamic in Frameworks */,
+				119924A82B8E1C8D00EC7DF0 /* RxCocoa-Dynamic in Frameworks */,
+				119924A22B8E1C8C00EC7DF0 /* RxBlocking in Frameworks */,
 				1162BACD2B7CF8F900CBFD68 /* SnapKit in Frameworks */,
-				119924052B89D28300EC7DF0 /* RxBlocking in Frameworks */,
-				1199240D2B89D28300EC7DF0 /* RxRelay in Frameworks */,
 				119924222B89D30E00EC7DF0 /* FirebaseFirestore in Frameworks */,
-				119924092B89D28300EC7DF0 /* RxCocoa in Frameworks */,
 				1162BACF2B7CF8F900CBFD68 /* SnapKit-Dynamic in Frameworks */,
 				1199241A2B89D30E00EC7DF0 /* FirebaseAuthCombine-Community in Frameworks */,
 				119924182B89D30E00EC7DF0 /* FirebaseAuth in Frameworks */,
+				119924A42B8E1C8C00EC7DF0 /* RxBlocking-Dynamic in Frameworks */,
+				119924AC2B8E1C8D00EC7DF0 /* RxRelay-Dynamic in Frameworks */,
 				119924262B89D30E00EC7DF0 /* FirebaseStorage in Frameworks */,
 				1199241C2B89D30E00EC7DF0 /* FirebaseCrashlytics in Frameworks */,
-				1199240B2B89D28300EC7DF0 /* RxCocoa-Dynamic in Frameworks */,
+				119924A62B8E1C8D00EC7DF0 /* RxCocoa in Frameworks */,
 				119924162B89D30E00EC7DF0 /* FirebaseAnalytics in Frameworks */,
 				1199241E2B89D30E00EC7DF0 /* FirebaseDatabase in Frameworks */,
-				119924072B89D28300EC7DF0 /* RxBlocking-Dynamic in Frameworks */,
+				119924AA2B8E1C8D00EC7DF0 /* RxRelay in Frameworks */,
 				119924202B89D30E00EC7DF0 /* FirebaseDynamicLinks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,9 +110,10 @@
 		1162BA832B7AA4E300CBFD68 /* GrillTimer_Swift-CodeUI */ = {
 			isa = PBXGroup;
 			children = (
-				1162BAC22B7CF39C00CBFD68 /* Coordinator.swift */,
+				11719C7E2BA3701C0013349B /* Coordinator */,
+				11719C7D2BA36FAD0013349B /* Manager */,
 				119924962B8E03EE00EC7DF0 /* Extension */,
-				1162BAEB2B7E601500CBFD68 /* Models */,
+				1162BAEB2B7E601500CBFD68 /* Model */,
 				1162BAC42B7CF43A00CBFD68 /* Main */,
 				1162BA842B7AA4E300CBFD68 /* AppDelegate.swift */,
 				1162BA862B7AA4E300CBFD68 /* SceneDelegate.swift */,
@@ -117,7 +122,6 @@
 				1162BA952B7AA4E500CBFD68 /* Info.plist */,
 				1199246D2B8A014900EC7DF0 /* GoogleService-Info.plist */,
 				1162BA8D2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodeld */,
-				1162BAEC2B7E60B200CBFD68 /* DataManager.swift */,
 			);
 			path = "GrillTimer_Swift-CodeUI";
 			sourceTree = "<group>";
@@ -125,26 +129,50 @@
 		1162BAC42B7CF43A00CBFD68 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				1162BAC52B7CF44F00CBFD68 /* MainView.swift */,
-				1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */,
-				1162BAD22B7E55A400CBFD68 /* MainTableViewCell.swift */,
+				11719C7F2BA370500013349B /* Dishes */,
 				1199249B2B8E0B6C00EC7DF0 /* Dish */,
 			);
 			path = Main;
 			sourceTree = "<group>";
 		};
-		1162BAEB2B7E601500CBFD68 /* Models */ = {
+		1162BAEB2B7E601500CBFD68 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				1162BAE92B7E600E00CBFD68 /* Dish.swift */,
 			);
-			path = Models;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		11719C7D2BA36FAD0013349B /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				1162BAEC2B7E60B200CBFD68 /* FirebaseManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		11719C7E2BA3701C0013349B /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				1162BAC22B7CF39C00CBFD68 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		11719C7F2BA370500013349B /* Dishes */ = {
+			isa = PBXGroup;
+			children = (
+				1162BAC52B7CF44F00CBFD68 /* MainViewController.swift */,
+				1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */,
+				1162BAD22B7E55A400CBFD68 /* MainTableViewCell.swift */,
+			);
+			path = Dishes;
 			sourceTree = "<group>";
 		};
 		119924962B8E03EE00EC7DF0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				119924992B8E04A000EC7DF0 /* UIViewExtension.swift */,
+				119924992B8E04A000EC7DF0 /* UIView + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -152,6 +180,8 @@
 		1199249B2B8E0B6C00EC7DF0 /* Dish */ = {
 			isa = PBXGroup;
 			children = (
+				1199249C2B8E0C4A00EC7DF0 /* DishViewController.swift */,
+				1199249E2B8E0C5800EC7DF0 /* DishViewModel.swift */,
 			);
 			path = Dish;
 			sourceTree = "<group>";
@@ -175,13 +205,6 @@
 			packageProductDependencies = (
 				1162BACC2B7CF8F900CBFD68 /* SnapKit */,
 				1162BACE2B7CF8F900CBFD68 /* SnapKit-Dynamic */,
-				119924042B89D28300EC7DF0 /* RxBlocking */,
-				119924062B89D28300EC7DF0 /* RxBlocking-Dynamic */,
-				119924082B89D28300EC7DF0 /* RxCocoa */,
-				1199240A2B89D28300EC7DF0 /* RxCocoa-Dynamic */,
-				1199240C2B89D28300EC7DF0 /* RxRelay */,
-				1199240E2B89D28300EC7DF0 /* RxRelay-Dynamic */,
-				119924102B89D28300EC7DF0 /* RxSwift */,
 				119924152B89D30E00EC7DF0 /* FirebaseAnalytics */,
 				119924172B89D30E00EC7DF0 /* FirebaseAuth */,
 				119924192B89D30E00EC7DF0 /* FirebaseAuthCombine-Community */,
@@ -191,6 +214,13 @@
 				119924212B89D30E00EC7DF0 /* FirebaseFirestore */,
 				119924232B89D30E00EC7DF0 /* FirebaseFirestoreSwift */,
 				119924252B89D30E00EC7DF0 /* FirebaseStorage */,
+				119924A12B8E1C8C00EC7DF0 /* RxBlocking */,
+				119924A32B8E1C8C00EC7DF0 /* RxBlocking-Dynamic */,
+				119924A52B8E1C8D00EC7DF0 /* RxCocoa */,
+				119924A72B8E1C8D00EC7DF0 /* RxCocoa-Dynamic */,
+				119924A92B8E1C8D00EC7DF0 /* RxRelay */,
+				119924AB2B8E1C8D00EC7DF0 /* RxRelay-Dynamic */,
+				119924AD2B8E1C8D00EC7DF0 /* RxSwift */,
 			);
 			productName = "GrillTimer_Swift-CodeUI";
 			productReference = 1162BA812B7AA4E300CBFD68 /* GrillTimer_Swift-CodeUI.app */;
@@ -225,6 +255,7 @@
 				1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				119924032B89D28300EC7DF0 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				119924142B89D30E00EC7DF0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				119924A02B8E1C8C00EC7DF0 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 1162BA822B7AA4E300CBFD68 /* Products */;
 			projectDirPath = "";
@@ -253,16 +284,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1199249A2B8E04A000EC7DF0 /* UIViewExtension.swift in Sources */,
+				1199249A2B8E04A000EC7DF0 /* UIView + Extension.swift in Sources */,
 				1162BAC32B7CF39C00CBFD68 /* Coordinator.swift in Sources */,
 				1162BAC82B7CF45E00CBFD68 /* MainViewModel.swift in Sources */,
+				1199249D2B8E0C4A00EC7DF0 /* DishViewController.swift in Sources */,
 				1162BA852B7AA4E300CBFD68 /* AppDelegate.swift in Sources */,
 				1162BAD32B7E55A400CBFD68 /* MainTableViewCell.swift in Sources */,
+				1199249F2B8E0C5800EC7DF0 /* DishViewModel.swift in Sources */,
 				1162BA872B7AA4E300CBFD68 /* SceneDelegate.swift in Sources */,
 				1162BAEA2B7E600E00CBFD68 /* Dish.swift in Sources */,
-				1162BAC62B7CF44F00CBFD68 /* MainView.swift in Sources */,
+				1162BAC62B7CF44F00CBFD68 /* MainViewController.swift in Sources */,
 				1162BA8F2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodeld in Sources */,
-				1162BAED2B7E60B200CBFD68 /* DataManager.swift in Sources */,
+				1162BAED2B7E60B200CBFD68 /* FirebaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +542,14 @@
 				minimumVersion = 10.21.0;
 			};
 		};
+		119924A02B8E1C8C00EC7DF0 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -521,41 +562,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1162BACB2B7CF8F900CBFD68 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
-		};
-		119924042B89D28300EC7DF0 /* RxBlocking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxBlocking;
-		};
-		119924062B89D28300EC7DF0 /* RxBlocking-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxBlocking-Dynamic";
-		};
-		119924082B89D28300EC7DF0 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		1199240A2B89D28300EC7DF0 /* RxCocoa-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxCocoa-Dynamic";
-		};
-		1199240C2B89D28300EC7DF0 /* RxRelay */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
-		};
-		1199240E2B89D28300EC7DF0 /* RxRelay-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxRelay-Dynamic";
-		};
-		119924102B89D28300EC7DF0 /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
 		};
 		119924152B89D30E00EC7DF0 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -601,6 +607,41 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 119924142B89D30E00EC7DF0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		119924A12B8E1C8C00EC7DF0 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		119924A32B8E1C8C00EC7DF0 /* RxBlocking-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxBlocking-Dynamic";
+		};
+		119924A52B8E1C8D00EC7DF0 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		119924A72B8E1C8D00EC7DF0 /* RxCocoa-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxCocoa-Dynamic";
+		};
+		119924A92B8E1C8D00EC7DF0 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		119924AB2B8E1C8D00EC7DF0 /* RxRelay-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxRelay-Dynamic";
+		};
+		119924AD2B8E1C8D00EC7DF0 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1162BAD42B7E5DD200CBFD68 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 
