@@ -9,5 +9,5 @@ struct Dish: Codable {
 //    var cooking_time: [Double]
 //    var doneness: [String]
 //    var grill_temperature: [Double]
-//    var instructions: String
+    var instructions: String
 }
