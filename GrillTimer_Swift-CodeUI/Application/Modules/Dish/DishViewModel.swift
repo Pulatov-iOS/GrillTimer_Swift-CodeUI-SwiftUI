@@ -11,7 +11,7 @@ final class DefaultDishViewModel {
     }
     
     // MARK: Private Properties
-    var dishSubject = CurrentValueSubject<Dish, Never>(Dish(name: "", meatTypes: [], averageCookingTimes: ""))
+    var dishSubject = CurrentValueSubject<Dish, Never>(Dish(name: "", meatTypes: [], averageCookingTimes: "", instructions: ""))
 }
 
 // MARK: - DishViewModel
