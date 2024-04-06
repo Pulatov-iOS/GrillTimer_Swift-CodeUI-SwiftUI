@@ -3,11 +3,14 @@ import FirebaseFirestoreSwift
 struct Dish: Codable {
     
     @DocumentID var id: String?
-    var name: String
-    var meatTypes: [String]
+    var meatType: String
+    var dishType: String
     var averageCookingTimes: String
+    var instructions: String
+    
+    
 //    var cooking_time: [Double]
 //    var doneness: [String]
 //    var grill_temperature: [Double]
-    var instructions: String
+
 }

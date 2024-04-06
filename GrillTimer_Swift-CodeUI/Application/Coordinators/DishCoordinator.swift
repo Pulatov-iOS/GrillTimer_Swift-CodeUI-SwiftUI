@@ -9,10 +9,12 @@ import UIKit
 
 final class DishCoordinator {
     
-    let rootNavigationController: UINavigationController
+    private let navigationController: UINavigationController
+    private let tabBar: TabBarItem
     
-    init(rootNavigationController: UINavigationController) {
-        self.rootNavigationController = rootNavigationController
+    init(navigationController: UINavigationController, tabBar: TabBarItem) {
+        self.navigationController = navigationController
+        self.tabBar = tabBar
     }
     
     func start() {
@@ -22,10 +24,10 @@ final class DishCoordinator {
     private func showDishScreen() {
         let firebaseManager = DefaultFirebaseManager.instance
         
-        let view = DefaultMainViewController()
-        let viewModel = DefaultMainViewModel(firebaseManager: firebaseManager)
+        let view = DishesViewController(tabBar: tabBar)
+        let viewModel = DishesViewModel(firebaseManager: firebaseManager)
         view.viewModel = viewModel
-        rootNavigationController.pushViewController(view, animated: true)
+        navigationController.setViewControllers([view], animated: false)
         
         viewModel.showDishScreen = { [weak self] dish in
             self?.showDishScreen(dish: dish)
@@ -33,9 +35,9 @@ final class DishCoordinator {
     }
     
     private func showDishScreen(dish: Dish) {
-        let view = DefaultDishViewController()
-        let viewModel = DefaultDishViewModel(dish: dish)
+        let view = DishViewController()
+        let viewModel = DishViewModel(dish: dish)
         view.viewModel = viewModel
-        rootNavigationController.pushViewController(view, animated: true)
+        navigationController.pushViewController(view, animated: true)
     }
 }

@@ -76,9 +76,9 @@ final class MainTableViewCell: UITableViewCell {
     }
     
     private func configureUI() {
-        containerView.backgroundColor = UIColor(resource: .Color.mainCellBackground)
+        containerView.backgroundColor = UIColor(resource: .Color.Dish.Cell.mainCellBackground)
         containerView.layer.cornerRadius = 8
-        containerView.layer.shadowColor = UIColor(resource: .Color.mainCellShadow).cgColor // Вопрос
+        containerView.layer.shadowColor = UIColor(resource: .Color.Dish.Cell.mainCellShadow).cgColor // Вопрос
         containerView.layer.shadowOpacity = 0.5
         containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
         containerView.layer.shadowRadius = 4
@@ -94,8 +94,8 @@ final class MainTableViewCell: UITableViewCell {
     }
     
     func setInformation(_ dish: Dish) {
-        nameLabel.text = dish.name
-        meatTypeLabel.text = "Meat: \(dish.meatTypes.joined(separator: ", "))"
+        nameLabel.text = dish.dishType
+        meatTypeLabel.text = "Meat:"
         averageCookingTimesLabel.text = "Avg. times: \(dish.averageCookingTimes) min"
     }
     

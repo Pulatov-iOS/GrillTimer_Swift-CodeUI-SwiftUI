@@ -2,15 +2,27 @@ import UIKit
 import SnapKit
 import Combine
 
-final class DefaultMainViewController: UIViewController {
+final class DishesViewController: UIViewController {
 
-    // MARK: - Properties
-    // MARK: Public
-    var viewModel: MainViewModel!
+    // MARK: - Public Properties
+    var viewModel: DishesViewModel!
     
-    // MARK: Private
+    // MARK: Private Properties
     private let grillTableView = UITableView()
     private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - UI Properties
+    private let tabBar: TabBarItem
+    
+    // MARK: - Init
+    init(tabBar: TabBarItem) {
+        self.tabBar = tabBar
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - LyfeCycle
     override func viewDidLoad() {
@@ -25,17 +37,22 @@ final class DefaultMainViewController: UIViewController {
     
     // MARK: - Helpers
     private func addSubviews() {
-        view.addSubview(grillTableView)
+        view.addSubviews([grillTableView, tabBar])
     }
     
     private func configureConstraints() {
         grillTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        tabBar.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(30)
+            make.width.equalToSuperview()
+        }
     }
     
     private func configureUI() {
-        view.backgroundColor = UIColor(resource: .Color.mainViewBackground)
+        view.backgroundColor = UIColor(resource: .Color.Dish.dishViewBackground)
         
         let titleLabel = UILabel()
         titleLabel.text = "Dishes"
@@ -64,7 +81,7 @@ final class DefaultMainViewController: UIViewController {
 }
 
 // MARK: - TableViewDelegate/DataSource
-extension DefaultMainViewController: UITableViewDelegate, UITableViewDataSource {
+extension DishesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.dishesSubject.value.count
@@ -80,7 +97,7 @@ extension DefaultMainViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 // MARK: - MainTableViewCellDelegate
-extension DefaultMainViewController: MainTableViewCellDelegate {
+extension DishesViewController: MainTableViewCellDelegate {
     
     func didSelectCell(_ cell: MainTableViewCell) {
         guard let indexPath = grillTableView.indexPath(for: cell) else { return }

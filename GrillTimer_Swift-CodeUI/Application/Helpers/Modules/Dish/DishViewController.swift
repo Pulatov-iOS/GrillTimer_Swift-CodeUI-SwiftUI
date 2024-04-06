@@ -2,11 +2,7 @@ import UIKit
 import SnapKit
 import Combine
 
-protocol DishViewController: AnyObject {
-
-}
-
-final class DefaultDishViewController: UIViewController {
+final class DishViewController: UIViewController {
     
     // MARK: - Public Properties
     var viewModel: DishViewModel!
@@ -46,7 +42,7 @@ final class DefaultDishViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = UIColor(resource: .Color.dishViewBackground)
+        view.backgroundColor = UIColor(resource: .Color.Dish.dishViewBackground)
         
         mainImageView.backgroundColor = .black
     }
@@ -59,11 +55,6 @@ final class DefaultDishViewController: UIViewController {
     }
 
     func setInformation(_ dish: Dish) {
-        nameLabel.text = dish.name
+        nameLabel.text = dish.dishType
     }
-}
-
-// MARK: - DishView
-extension DefaultDishViewController: DishViewController {
-    
 }
