@@ -2,10 +2,6 @@ import UIKit
 import SnapKit
 import Combine
 
-protocol MainViewController: AnyObject {
-    
-}
-
 final class DefaultMainViewController: UIViewController {
 
     // MARK: - Properties
@@ -65,11 +61,6 @@ final class DefaultMainViewController: UIViewController {
         }
         .store(in: &cancellables)
     }
-}
-
-// MARK: - MainView
-extension DefaultMainViewController: MainViewController {
-    
 }
 
 // MARK: - TableViewDelegate/DataSource

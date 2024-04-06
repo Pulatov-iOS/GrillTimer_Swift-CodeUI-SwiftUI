@@ -1,6 +1,13 @@
+//
+//  DishCoordinator.swift
+//  GrillTimer_Swift-CodeUI
+//
+//  Created by Alexander on 6.04.24.
+//
+
 import UIKit
 
-final class Coordinator {
+final class DishCoordinator {
     
     let rootNavigationController: UINavigationController
     
@@ -9,10 +16,10 @@ final class Coordinator {
     }
     
     func start() {
-        showMainScreen()
+        showDishScreen()
     }
     
-    private func showMainScreen() {
+    private func showDishScreen() {
         let firebaseManager = DefaultFirebaseManager.instance
         
         let view = DefaultMainViewController()

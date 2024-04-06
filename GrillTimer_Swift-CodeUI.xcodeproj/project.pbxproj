@@ -12,7 +12,7 @@
 		1162BA8F2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1162BA8D2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodeld */; };
 		1162BA912B7AA4E500CBFD68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1162BA902B7AA4E500CBFD68 /* Assets.xcassets */; };
 		1162BA942B7AA4E500CBFD68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1162BA922B7AA4E500CBFD68 /* LaunchScreen.storyboard */; };
-		1162BAC32B7CF39C00CBFD68 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC22B7CF39C00CBFD68 /* Coordinator.swift */; };
+		1162BAC32B7CF39C00CBFD68 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC22B7CF39C00CBFD68 /* RootCoordinator.swift */; };
 		1162BAC62B7CF44F00CBFD68 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC52B7CF44F00CBFD68 /* MainViewController.swift */; };
 		1162BAC82B7CF45E00CBFD68 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */; };
 		1162BACD2B7CF8F900CBFD68 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1162BACC2B7CF8F900CBFD68 /* SnapKit */; };
@@ -21,6 +21,7 @@
 		1162BAEA2B7E600E00CBFD68 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAE92B7E600E00CBFD68 /* Dish.swift */; };
 		1162BAED2B7E60B200CBFD68 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAEC2B7E60B200CBFD68 /* FirebaseManager.swift */; };
 		117E8FD72BC1442000D3AF7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 117E8FD62BC1442000D3AF7B /* GoogleService-Info.plist */; };
+		117E8FE12BC1472800D3AF7B /* DishCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E8FE02BC1472800D3AF7B /* DishCoordinator.swift */; };
 		119924162B89D30E00EC7DF0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 119924152B89D30E00EC7DF0 /* FirebaseAnalytics */; };
 		119924182B89D30E00EC7DF0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 119924172B89D30E00EC7DF0 /* FirebaseAuth */; };
 		1199241A2B89D30E00EC7DF0 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 119924192B89D30E00EC7DF0 /* FirebaseAuthCombine-Community */; };
@@ -44,19 +45,20 @@
 
 /* Begin PBXFileReference section */
 		1162BA812B7AA4E300CBFD68 /* GrillTimer_Swift-CodeUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GrillTimer_Swift-CodeUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1162BA842B7AA4E300CBFD68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1162BA862B7AA4E300CBFD68 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1162BA842B7AA4E300CBFD68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
+		1162BA862B7AA4E300CBFD68 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../SceneDelegate.swift; sourceTree = "<group>"; };
 		1162BA8E2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GrillTimer_Swift_CodeUI.xcdatamodel; sourceTree = "<group>"; };
 		1162BA902B7AA4E500CBFD68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1162BA932B7AA4E500CBFD68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1162BA952B7AA4E500CBFD68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1162BAC22B7CF39C00CBFD68 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		1162BAC22B7CF39C00CBFD68 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		1162BAC52B7CF44F00CBFD68 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1162BAC72B7CF45E00CBFD68 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		1162BAD22B7E55A400CBFD68 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		1162BAE92B7E600E00CBFD68 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		1162BAEC2B7E60B200CBFD68 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		117E8FD62BC1442000D3AF7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		117E8FE02BC1472800D3AF7B /* DishCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCoordinator.swift; sourceTree = "<group>"; };
 		119924992B8E04A000EC7DF0 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		1199249C2B8E0C4A00EC7DF0 /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
 		1199249E2B8E0C5800EC7DF0 /* DishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewModel.swift; sourceTree = "<group>"; };
@@ -111,8 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				117E8FD92BC144F600D3AF7B /* Application */,
-				1162BA842B7AA4E300CBFD68 /* AppDelegate.swift */,
-				1162BA862B7AA4E300CBFD68 /* SceneDelegate.swift */,
 				1162BA902B7AA4E500CBFD68 /* Assets.xcassets */,
 				1162BA922B7AA4E500CBFD68 /* LaunchScreen.storyboard */,
 				1162BA952B7AA4E500CBFD68 /* Info.plist */,
@@ -142,7 +142,8 @@
 		11719C7E2BA3701C0013349B /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				1162BAC22B7CF39C00CBFD68 /* Coordinator.swift */,
+				1162BAC22B7CF39C00CBFD68 /* RootCoordinator.swift */,
+				117E8FE02BC1472800D3AF7B /* DishCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -160,6 +161,8 @@
 		117E8FD92BC144F600D3AF7B /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				1162BA842B7AA4E300CBFD68 /* AppDelegate.swift */,
+				1162BA862B7AA4E300CBFD68 /* SceneDelegate.swift */,
 				11719C7E2BA3701C0013349B /* Coordinators */,
 				11719C7D2BA36FAD0013349B /* Managers */,
 				117E8FDA2BC1451400D3AF7B /* Helpers */,
@@ -182,6 +185,7 @@
 		117E8FDB2BC1452B00D3AF7B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				117E8FDF2BC146A500D3AF7B /* New Group */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,6 +203,13 @@
 			children = (
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		117E8FDF2BC146A500D3AF7B /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		119924962B8E03EE00EC7DF0 /* Extension */ = {
@@ -317,7 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1199249A2B8E04A000EC7DF0 /* UIView + Extension.swift in Sources */,
-				1162BAC32B7CF39C00CBFD68 /* Coordinator.swift in Sources */,
+				1162BAC32B7CF39C00CBFD68 /* RootCoordinator.swift in Sources */,
 				1162BAC82B7CF45E00CBFD68 /* MainViewModel.swift in Sources */,
 				1199249D2B8E0C4A00EC7DF0 /* DishViewController.swift in Sources */,
 				1162BA852B7AA4E300CBFD68 /* AppDelegate.swift in Sources */,
@@ -326,6 +337,7 @@
 				1162BA872B7AA4E300CBFD68 /* SceneDelegate.swift in Sources */,
 				1162BAEA2B7E600E00CBFD68 /* Dish.swift in Sources */,
 				1162BAC62B7CF44F00CBFD68 /* MainViewController.swift in Sources */,
+				117E8FE12BC1472800D3AF7B /* DishCoordinator.swift in Sources */,
 				1162BA8F2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodeld in Sources */,
 				1162BAED2B7E60B200CBFD68 /* FirebaseManager.swift in Sources */,
 			);
