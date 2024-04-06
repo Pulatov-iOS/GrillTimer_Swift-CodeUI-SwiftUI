@@ -12,8 +12,8 @@ final class DishHeaderView: UICollectionReusableView {
     // MARK: - UI Properties
     private let titleLabel: UILabel = {
         let label = UILabel()
-//        label.textColor = Asset.Colors.SecondSettings.secondTextHeader.color
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = .Color.Main.text
+        label.font = UIFont.manrope(ofSize: 20, style: .bold)
         return label
     }()
     

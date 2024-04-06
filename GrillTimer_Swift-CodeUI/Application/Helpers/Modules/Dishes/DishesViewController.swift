@@ -101,7 +101,6 @@ final class DishesViewController: UIViewController {
     // MARK: - Helpers
     private func addSubviews() {
         view.addSubviews([titleLabel ,segmentedControl, collectionView, backgroundTabBarView, tabBar])
-        
     }
     
     private func configureConstraints() {
