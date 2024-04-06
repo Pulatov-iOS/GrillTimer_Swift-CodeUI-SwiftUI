@@ -108,7 +108,7 @@ final class TabBarItem: UIView {
         centerImageView.contentMode = .scaleAspectFit
         rightImageView.contentMode = .scaleAspectFit
         
-        backgroundView.backgroundColor = UIColor(resource: .Color.Dish.dishViewBackground)
+        backgroundView.backgroundColor = UIColor(resource: .Color.Main.background)
     }
     
     private func bind() {

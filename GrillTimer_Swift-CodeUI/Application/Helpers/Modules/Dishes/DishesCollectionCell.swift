@@ -1,17 +1,21 @@
+//
+//  DishesCollectionCell.swift
+//  GrillTimer_Swift-CodeUI
+//
+//  Created by Alexander on 6.04.24.
+//
+
 import UIKit
 import SnapKit
+import Combine
 
-protocol MainTableViewCellDelegate: AnyObject {
-    func didSelectCell(_ cell: MainTableViewCell)
-}
-
-final class MainTableViewCell: UITableViewCell {
+final class DishesCollectionCell: UICollectionViewCell {
     
-    // MARK: - Properties
-    // MARK: Public
-    weak var delegate: MainTableViewCellDelegate?
+    // MARK: - Public Properties
+    var cellTappedPublisher = PassthroughSubject<Void, Never>()
+    static let reuseIdentifier = "DishesCollectionCell"
     
-    // MARK: Private
+    // MARK: Private Properties
     private let containerView = UIView()
     private let mainImageView = UIImageView()
     private let nameLabel = UILabel()
@@ -19,13 +23,14 @@ final class MainTableViewCell: UITableViewCell {
     private let averageCookingTimesLabel = UILabel()
     private let favoriteButton = UIImageView()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    // MARK: - Init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         addSubviews()
         configureConstraints()
         configureUI()
-        cellTappedHandler()
+        bind()
     }
     
     required init?(coder: NSCoder) {
@@ -99,12 +104,12 @@ final class MainTableViewCell: UITableViewCell {
         averageCookingTimesLabel.text = "Avg. times: \(dish.averageCookingTimes) min"
     }
     
-    private func cellTappedHandler() {
+    private func bind() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
         containerView.addGestureRecognizer(tapGesture)
     }
     
     @objc private func cellTapped() {
-        delegate?.didSelectCell(self)
+        cellTappedPublisher.send()
     }
 }

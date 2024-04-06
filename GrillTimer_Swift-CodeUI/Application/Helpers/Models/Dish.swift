@@ -1,6 +1,6 @@
 import FirebaseFirestoreSwift
 
-struct Dish: Codable {
+struct Dish: Codable, Hashable {
     
     @DocumentID var id: String?
     var meatType: String

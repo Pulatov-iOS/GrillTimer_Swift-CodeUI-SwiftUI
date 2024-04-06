@@ -17,12 +17,22 @@
 		1162BAC82B7CF45E00CBFD68 /* DishesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAC72B7CF45E00CBFD68 /* DishesViewModel.swift */; };
 		1162BACD2B7CF8F900CBFD68 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1162BACC2B7CF8F900CBFD68 /* SnapKit */; };
 		1162BACF2B7CF8F900CBFD68 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1162BACE2B7CF8F900CBFD68 /* SnapKit-Dynamic */; };
-		1162BAD32B7E55A400CBFD68 /* DishesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAD22B7E55A400CBFD68 /* DishesViewCell.swift */; };
 		1162BAEA2B7E600E00CBFD68 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAE92B7E600E00CBFD68 /* Dish.swift */; };
 		1162BAED2B7E60B200CBFD68 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162BAEC2B7E60B200CBFD68 /* FirebaseManager.swift */; };
 		117E8FD72BC1442000D3AF7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 117E8FD62BC1442000D3AF7B /* GoogleService-Info.plist */; };
 		117E8FE12BC1472800D3AF7B /* DishCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E8FE02BC1472800D3AF7B /* DishCoordinator.swift */; };
 		117E8FE92BC14E3D00D3AF7B /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E8FE82BC14E3D00D3AF7B /* TabBarItem.swift */; };
+		117E8FF12BC1553B00D3AF7B /* Manrope-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 117E8FEA2BC1553900D3AF7B /* Manrope-SemiBold.ttf */; };
+		117E8FF22BC1553B00D3AF7B /* Manrope-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 117E8FEB2BC1553B00D3AF7B /* Manrope-ExtraBold.ttf */; };
+		117E8FF32BC1553B00D3AF7B /* Manrope-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 117E8FEC2BC1553B00D3AF7B /* Manrope-Light.ttf */; };
+		117E8FF42BC1553B00D3AF7B /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 117E8FED2BC1553B00D3AF7B /* Manrope-Regular.ttf */; };
+		117E8FF52BC1553B00D3AF7B /* Manrope-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 117E8FEE2BC1553B00D3AF7B /* Manrope-ExtraLight.ttf */; };
+		117E8FF62BC1553B00D3AF7B /* Manrope-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 117E8FEF2BC1553B00D3AF7B /* Manrope-Medium.ttf */; };
+		117E8FF72BC1553B00D3AF7B /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 117E8FF02BC1553B00D3AF7B /* Manrope-Bold.ttf */; };
+		117E8FF92BC1555000D3AF7B /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E8FF82BC1555000D3AF7B /* UIFont + Extension.swift */; };
+		117E8FFB2BC16BA500D3AF7B /* DishesCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E8FFA2BC16BA500D3AF7B /* DishesCompositionalLayout.swift */; };
+		117E8FFD2BC17D4500D3AF7B /* DishHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E8FFC2BC17D4500D3AF7B /* DishHeaderView.swift */; };
+		117E8FFF2BC184DF00D3AF7B /* DishesCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E8FFE2BC184DF00D3AF7B /* DishesCollectionCell.swift */; };
 		119924162B89D30E00EC7DF0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 119924152B89D30E00EC7DF0 /* FirebaseAnalytics */; };
 		119924182B89D30E00EC7DF0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 119924172B89D30E00EC7DF0 /* FirebaseAuth */; };
 		1199241A2B89D30E00EC7DF0 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 119924192B89D30E00EC7DF0 /* FirebaseAuthCombine-Community */; };
@@ -42,6 +52,7 @@
 		119924AA2B8E1C8D00EC7DF0 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 119924A92B8E1C8D00EC7DF0 /* RxRelay */; };
 		119924AC2B8E1C8D00EC7DF0 /* RxRelay-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 119924AB2B8E1C8D00EC7DF0 /* RxRelay-Dynamic */; };
 		119924AE2B8E1C8D00EC7DF0 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 119924AD2B8E1C8D00EC7DF0 /* RxSwift */; };
+		11CB39612BC1A19700B0E8BB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 11CB39602BC1A19700B0E8BB /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,15 +66,26 @@
 		1162BAC22B7CF39C00CBFD68 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		1162BAC52B7CF44F00CBFD68 /* DishesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesViewController.swift; sourceTree = "<group>"; };
 		1162BAC72B7CF45E00CBFD68 /* DishesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesViewModel.swift; sourceTree = "<group>"; };
-		1162BAD22B7E55A400CBFD68 /* DishesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesViewCell.swift; sourceTree = "<group>"; };
 		1162BAE92B7E600E00CBFD68 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		1162BAEC2B7E60B200CBFD68 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		117E8FD62BC1442000D3AF7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		117E8FE02BC1472800D3AF7B /* DishCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCoordinator.swift; sourceTree = "<group>"; };
 		117E8FE82BC14E3D00D3AF7B /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		117E8FEA2BC1553900D3AF7B /* Manrope-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-SemiBold.ttf"; sourceTree = "<group>"; };
+		117E8FEB2BC1553B00D3AF7B /* Manrope-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-ExtraBold.ttf"; sourceTree = "<group>"; };
+		117E8FEC2BC1553B00D3AF7B /* Manrope-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Light.ttf"; sourceTree = "<group>"; };
+		117E8FED2BC1553B00D3AF7B /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
+		117E8FEE2BC1553B00D3AF7B /* Manrope-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-ExtraLight.ttf"; sourceTree = "<group>"; };
+		117E8FEF2BC1553B00D3AF7B /* Manrope-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Medium.ttf"; sourceTree = "<group>"; };
+		117E8FF02BC1553B00D3AF7B /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
+		117E8FF82BC1555000D3AF7B /* UIFont + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
+		117E8FFA2BC16BA500D3AF7B /* DishesCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesCompositionalLayout.swift; sourceTree = "<group>"; };
+		117E8FFC2BC17D4500D3AF7B /* DishHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishHeaderView.swift; sourceTree = "<group>"; };
+		117E8FFE2BC184DF00D3AF7B /* DishesCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesCollectionCell.swift; sourceTree = "<group>"; };
 		119924992B8E04A000EC7DF0 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		1199249C2B8E0C4A00EC7DF0 /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
 		1199249E2B8E0C5800EC7DF0 /* DishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewModel.swift; sourceTree = "<group>"; };
+		11CB39602BC1A19700B0E8BB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				117E8FD92BC144F600D3AF7B /* Application */,
+				11CB39602BC1A19700B0E8BB /* Localizable.xcstrings */,
 				1162BA902B7AA4E500CBFD68 /* Assets.xcassets */,
 				1162BA922B7AA4E500CBFD68 /* LaunchScreen.storyboard */,
 				1162BA952B7AA4E500CBFD68 /* Info.plist */,
@@ -156,7 +179,9 @@
 			children = (
 				1162BAC52B7CF44F00CBFD68 /* DishesViewController.swift */,
 				1162BAC72B7CF45E00CBFD68 /* DishesViewModel.swift */,
-				1162BAD22B7E55A400CBFD68 /* DishesViewCell.swift */,
+				117E8FFE2BC184DF00D3AF7B /* DishesCollectionCell.swift */,
+				117E8FFC2BC17D4500D3AF7B /* DishHeaderView.swift */,
+				117E8FFA2BC16BA500D3AF7B /* DishesCompositionalLayout.swift */,
 			);
 			path = Dishes;
 			sourceTree = "<group>";
@@ -204,6 +229,13 @@
 		117E8FDD2BC1454C00D3AF7B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				117E8FF02BC1553B00D3AF7B /* Manrope-Bold.ttf */,
+				117E8FEB2BC1553B00D3AF7B /* Manrope-ExtraBold.ttf */,
+				117E8FEE2BC1553B00D3AF7B /* Manrope-ExtraLight.ttf */,
+				117E8FEC2BC1553B00D3AF7B /* Manrope-Light.ttf */,
+				117E8FEF2BC1553B00D3AF7B /* Manrope-Medium.ttf */,
+				117E8FED2BC1553B00D3AF7B /* Manrope-Regular.ttf */,
+				117E8FEA2BC1553900D3AF7B /* Manrope-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -220,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				119924992B8E04A000EC7DF0 /* UIView + Extension.swift */,
+				117E8FF82BC1555000D3AF7B /* UIFont + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -295,6 +328,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 1162BA782B7AA4E300CBFD68;
 			packageReferences = (
@@ -318,9 +352,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117E8FF22BC1553B00D3AF7B /* Manrope-ExtraBold.ttf in Resources */,
 				1162BA942B7AA4E500CBFD68 /* LaunchScreen.storyboard in Resources */,
 				1162BA912B7AA4E500CBFD68 /* Assets.xcassets in Resources */,
+				117E8FF12BC1553B00D3AF7B /* Manrope-SemiBold.ttf in Resources */,
+				117E8FF32BC1553B00D3AF7B /* Manrope-Light.ttf in Resources */,
+				11CB39612BC1A19700B0E8BB /* Localizable.xcstrings in Resources */,
+				117E8FF52BC1553B00D3AF7B /* Manrope-ExtraLight.ttf in Resources */,
+				117E8FF72BC1553B00D3AF7B /* Manrope-Bold.ttf in Resources */,
+				117E8FF62BC1553B00D3AF7B /* Manrope-Medium.ttf in Resources */,
 				117E8FD72BC1442000D3AF7B /* GoogleService-Info.plist in Resources */,
+				117E8FF42BC1553B00D3AF7B /* Manrope-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,18 +373,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117E8FF92BC1555000D3AF7B /* UIFont + Extension.swift in Sources */,
 				1199249A2B8E04A000EC7DF0 /* UIView + Extension.swift in Sources */,
 				1162BAC32B7CF39C00CBFD68 /* RootCoordinator.swift in Sources */,
 				1162BAC82B7CF45E00CBFD68 /* DishesViewModel.swift in Sources */,
 				1199249D2B8E0C4A00EC7DF0 /* DishViewController.swift in Sources */,
+				117E8FFD2BC17D4500D3AF7B /* DishHeaderView.swift in Sources */,
 				117E8FE92BC14E3D00D3AF7B /* TabBarItem.swift in Sources */,
 				1162BA852B7AA4E300CBFD68 /* AppDelegate.swift in Sources */,
-				1162BAD32B7E55A400CBFD68 /* DishesViewCell.swift in Sources */,
 				1199249F2B8E0C5800EC7DF0 /* DishViewModel.swift in Sources */,
+				117E8FFB2BC16BA500D3AF7B /* DishesCompositionalLayout.swift in Sources */,
 				1162BA872B7AA4E300CBFD68 /* SceneDelegate.swift in Sources */,
 				1162BAEA2B7E600E00CBFD68 /* Dish.swift in Sources */,
 				1162BAC62B7CF44F00CBFD68 /* DishesViewController.swift in Sources */,
 				117E8FE12BC1472800D3AF7B /* DishCoordinator.swift in Sources */,
+				117E8FFF2BC184DF00D3AF7B /* DishesCollectionCell.swift in Sources */,
 				1162BA8F2B7AA4E300CBFD68 /* GrillTimer_Swift_CodeUI.xcdatamodeld in Sources */,
 				1162BAED2B7E60B200CBFD68 /* FirebaseManager.swift in Sources */,
 			);
@@ -367,6 +412,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -430,6 +476,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -495,6 +542,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,9 +550,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "PulatovAleksandr.GrillTimer-Swift-CodeUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -522,6 +573,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -529,9 +581,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "PulatovAleksandr.GrillTimer-Swift-CodeUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
