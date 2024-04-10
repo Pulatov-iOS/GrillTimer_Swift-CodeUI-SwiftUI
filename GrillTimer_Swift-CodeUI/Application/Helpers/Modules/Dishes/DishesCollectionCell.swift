@@ -16,12 +16,46 @@ final class DishesCollectionCell: UICollectionViewCell {
     static let reuseIdentifier = "DishesCollectionCell"
     
     // MARK: Private Properties
-    private let containerView = UIView()
-    private let mainImageView = UIImageView()
-    private let nameLabel = UILabel()
-    private let meatTypeLabel = UILabel()
-    private let averageCookingTimesLabel = UILabel()
-    private let favoriteButton = UIImageView()
+    private let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
+        view.layer.cornerRadius = 40
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 5
+        view.layer.shadowOpacity = 0.20
+        return view
+    }()
+    
+    private let imageView: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleToFill
+        image.layer.cornerRadius = 40
+        image.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        image.layer.masksToBounds = true
+        return image
+    }()
+    
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.manrope(ofSize: 20, style: .bold)
+        return label
+    }()
+    
+    private let avgTimesValueLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.manrope(ofSize: 18, style: .regular)
+        return label
+    }()
+    
+    private let avgTimesUnitLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("App.Dishes.Cell.UnitTimesLabel", comment: "")
+        label.font = UIFont.manrope(ofSize: 14, style: .medium)
+        label.textColor = .Color.Dish.Cell.unitText
+        return label
+    }()
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -39,69 +73,53 @@ final class DishesCollectionCell: UICollectionViewCell {
     
     private func addSubviews() {
         contentView.addSubview(containerView)
-        containerView.addSubviews([mainImageView, nameLabel, meatTypeLabel, averageCookingTimesLabel, favoriteButton])
+        containerView.addSubviews([imageView, nameLabel, avgTimesValueLabel, avgTimesUnitLabel])
     }
     
     private func configureConstraints() {
         containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 15, left: 15, bottom: 0, right: 15))
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5))
         }
         
-        mainImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(15)
-            make.bottom.equalToSuperview().offset(-15)
-            make.leading.equalToSuperview().offset(15)
-            make.width.equalTo(100)
-            make.height.equalTo(100)
+        imageView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().multipliedBy(0.75)
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(15)
-            make.leading.equalTo(mainImageView.snp.trailing).offset(15)
+            make.leading.equalToSuperview().offset(25)
+            make.bottom.equalToSuperview().inset(10)
         }
         
-        meatTypeLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(30)
-            make.leading.equalTo(mainImageView.snp.trailing).offset(15)
-            make.trailing.equalToSuperview().offset(-15)
+        avgTimesValueLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(avgTimesUnitLabel.snp.leading).inset(-3)
+            make.bottom.equalToSuperview().inset(10)
         }
         
-        averageCookingTimesLabel.snp.makeConstraints { make in
-            make.leading.equalTo(mainImageView.snp.trailing).offset(15)
-            make.trailing.equalToSuperview().offset(-15)
-            make.bottom.equalToSuperview().offset(-15)
-        }
-        
-        favoriteButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(15)
-            make.trailing.equalTo(containerView.snp.trailing).offset(-15)
-            make.width.equalTo(30)
-            make.height.equalTo(33)
+        avgTimesUnitLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(25)
+            make.bottom.equalToSuperview().inset(10)
         }
     }
     
     private func configureUI() {
-        containerView.backgroundColor = UIColor(resource: .Color.Dish.Cell.mainCellBackground)
-        containerView.layer.cornerRadius = 8
-        containerView.layer.shadowColor = UIColor(resource: .Color.Dish.Cell.mainCellShadow).cgColor // Вопрос
-        containerView.layer.shadowOpacity = 0.5
-        containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        containerView.layer.shadowRadius = 4
-        
-        mainImageView.backgroundColor = .black
-        
-        nameLabel.font = .systemFont(ofSize: 20, weight: .bold)
-        
-        if let image = UIImage(systemName: "bookmark")?.withRenderingMode(.alwaysTemplate) {
-            favoriteButton.image = image
-        }
-        favoriteButton.tintColor = .black
+  
     }
     
-    func setInformation(_ dish: Dish) {
-        nameLabel.text = dish.dishType
-        meatTypeLabel.text = "Meat:"
-        averageCookingTimesLabel.text = "Avg. times: \(dish.averageCookingTimes) min"
+    func setInformation(_ dish: Dish, sortingType: SortingType) {
+        let sortingTypeName: String
+        if sortingType == .meat {
+            sortingTypeName = SortingType.dish.rawValue + "." + dish.dishType.prefix(1).uppercased() + dish.dishType.dropFirst()
+        } else {
+            sortingTypeName = SortingType.meat.rawValue + "." + dish.meatType.prefix(1).uppercased() + dish.meatType.dropFirst()
+        }
+ 
+        let labelName = NSLocalizedString("App.Dishes.\(sortingTypeName)", comment: "")
+        nameLabel.text = labelName
+        avgTimesValueLabel.text = dish.averageCookingTimes
+        
+        let imageName = "Image/Menu/" + dish.dishType.prefix(1).uppercased() + dish.dishType.dropFirst() + "/\(dish.meatType)"
+        imageView.image = UIImage(named: imageName)
     }
     
     private func bind() {

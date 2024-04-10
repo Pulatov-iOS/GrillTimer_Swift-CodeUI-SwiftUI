@@ -2,9 +2,24 @@ import UIKit
 import SnapKit
 import Combine
 
-enum DishType {
+enum DishType: CaseIterable {
+    case skewers
     case steak
-    case dd
+    case ribs
+    case wings
+    case thighs
+    case sausages
+    case kebab
+}
+
+enum MeatType: CaseIterable {
+    case pork
+    case beef
+    case chicken
+    case lamb
+    case turkey
+    case duck
+    case rabbit
 }
 
 final class DishesViewController: UIViewController {
@@ -14,9 +29,22 @@ final class DishesViewController: UIViewController {
     
     // MARK: Private Properties
     private var cancellables = Set<AnyCancellable>()
-    private let sectionHeaderTitles: [DishType: String] = [
-        .steak: "1",
-        .dd: "2"
+    private let sectionHeaderTitles: [AnyHashable: String] = [
+        DishType.skewers: NSLocalizedString("App.Dishes.Dish.Skewers", comment: ""),
+        DishType.steak: NSLocalizedString("App.Dishes.Dish.Steak", comment: ""),
+        DishType.ribs: NSLocalizedString("App.Dishes.Dish.Ribs", comment: ""),
+        DishType.wings: NSLocalizedString("App.Dishes.Dish.Wings", comment: ""),
+        DishType.thighs: NSLocalizedString("App.Dishes.Dish.Thighs", comment: ""),
+        DishType.sausages: NSLocalizedString("App.Dishes.Dish.Sausages", comment: ""),
+        DishType.kebab: NSLocalizedString("App.Dishes.Dish.Kebab", comment: ""),
+        
+        MeatType.pork: NSLocalizedString("App.Dishes.Meat.Pork", comment: ""),
+        MeatType.beef: NSLocalizedString("App.Dishes.Meat.Beef", comment: ""),
+        MeatType.chicken: NSLocalizedString("App.Dishes.Meat.Chicken", comment: ""),
+        MeatType.lamb: NSLocalizedString("App.Dishes.Meat.Lamb", comment: ""),
+        MeatType.turkey: NSLocalizedString("App.Dishes.Meat.Turkey", comment: ""),
+        MeatType.duck: NSLocalizedString("App.Dishes.Meat.Duck", comment: ""),
+        MeatType.rabbit: NSLocalizedString("App.Dishes.Meat.Rabbit", comment: "")
     ]
     
     // MARK: - UI Properties
@@ -28,6 +56,18 @@ final class DishesViewController: UIViewController {
         return label
     }()
     
+    private lazy var settingsButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = UIColor(resource: .Color.Main.text)
+        button.setImage(UIImage(systemName: "gearshape"), for: .normal)
+        let symbolConfigurationSetup = UIImage.SymbolConfiguration(pointSize: 28)
+        button.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
+        button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        button.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
+        button.layer.cornerRadius = 27.5
+        return button
+    }()
+    
     private let segmentedControl: UISegmentedControl = {
         let segment = UISegmentedControl(items: [
             NSLocalizedString("App.Dishes.SegmentedControlItemDishes", comment: ""),
@@ -36,7 +76,7 @@ final class DishesViewController: UIViewController {
         segment.selectedSegmentIndex = 0
         segment.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
         segment.selectedSegmentTintColor = UIColor(resource: .Color.Dish.buttonSegmentedControl)
-        segment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.manrope(ofSize: 14, style: .regular), NSAttributedString.Key.foregroundColor: UIColor(resource: .Color.Main.text)], for: .normal)
+        segment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.manrope(ofSize: 16, style: .regular), NSAttributedString.Key.foregroundColor: UIColor(resource: .Color.Main.text)], for: .normal)
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
         return segment
     }()
@@ -51,19 +91,24 @@ final class DishesViewController: UIViewController {
         return collection
     }()
     
-    private lazy var dataSource: UICollectionViewDiffableDataSource<DishType, Dish> = {
-        let dataSource = UICollectionViewDiffableDataSource<DishType, Dish>(collectionView: collectionView) {
+    private lazy var dataSource: UICollectionViewDiffableDataSource<AnyHashable, Dish> = {
+        let dataSource = UICollectionViewDiffableDataSource<AnyHashable, Dish>(collectionView: self.collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, item: Dish) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishesCollectionCell.reuseIdentifier, for: indexPath) as? DishesCollectionCell else { return nil }
-            cell.setInformation(item)
+            cell.setInformation(item, sortingType: self.viewModel.currentSortingSubject.value)
             return cell
         }
         
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
             guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DishHeaderView", for: indexPath) as? DishHeaderView else { fatalError("") }
             let sectionIdentifier = dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            let sectionType = self.sectionHeaderTitles[sectionIdentifier] ?? ""
-            headerView.setTitle(sectionType)
+            if let dishType = sectionIdentifier as? DishType {
+                let sectionType = self.sectionHeaderTitles[dishType] ?? ""
+                headerView.setTitle(sectionType)
+            } else if let meatType = sectionIdentifier as? MeatType {
+                let sectionType = self.sectionHeaderTitles[meatType] ?? ""
+                headerView.setTitle(sectionType)
+            }
             return headerView
         }
         
@@ -100,13 +145,20 @@ final class DishesViewController: UIViewController {
     
     // MARK: - Helpers
     private func addSubviews() {
-        view.addSubviews([titleLabel ,segmentedControl, collectionView, backgroundTabBarView, tabBar])
+        view.addSubviews([titleLabel, settingsButton ,segmentedControl, collectionView, backgroundTabBarView, tabBar])
     }
     
     private func configureConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(80)
             make.centerX.equalToSuperview()
+        }
+        
+        settingsButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(24)
+            make.centerY.equalTo(titleLabel)
+            make.width.equalTo(55)
+            make.height.equalTo(55)
         }
         
         segmentedControl.snp.makeConstraints { make in
@@ -137,6 +189,8 @@ final class DishesViewController: UIViewController {
     }
     
     private func bind() {
+        segmentedControl.addTarget(self, action: #selector(segmentedControlTypeSortingChanged(_:)), for: .valueChanged)
+        
         viewModel.dishesSubject.sink { error in
             print(error)
         } receiveValue: { [weak self] _ in
@@ -144,16 +198,45 @@ final class DishesViewController: UIViewController {
         }
         .store(in: &cancellables)
 
+        viewModel.currentSortingSubject
+            .sink { [weak self] type in
+                self?.initialSnapshot()
+            }
+            .store(in: &cancellables)
     }
     
     func initialSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<DishType, Dish>()
-        snapshot.appendSections([.steak, .dd])
-        snapshot.appendItems(viewModel.dishesSubject.value, toSection: .steak)
-        snapshot.appendItems(viewModel.dishesSubject.value, toSection: .dd)
+        var snapshot = NSDiffableDataSourceSnapshot<AnyHashable, Dish>()
+    
+        if viewModel.currentSortingSubject.value == .dish {
+            snapshot.appendSections(DishType.allCases)
+            
+            for type in DishType.allCases {
+                snapshot.appendItems(viewModel.dishesSubject.value.filter { $0.dishType == "\(type)"}, toSection: type)
+            }
+        } else {
+            snapshot.appendSections(MeatType.allCases)
+            
+            for type in MeatType.allCases {
+                snapshot.appendItems(viewModel.dishesSubject.value.filter { $0.meatType == "\(type)"}, toSection: type)
+            }
+        }
+        
         dataSource.apply(snapshot, animatingDifferences: false)
     }
+    
+    @objc func settingsButtonTapped() {
+//        viewModel.settingsButtonTapped()
+    }
+    
+    @objc func segmentedControlTypeSortingChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            viewModel.changedTypeSorting(.dish)
+        case 1:
+            viewModel.changedTypeSorting(.meat)
+        default:
+            break
+        }
+    }
 }
-
-//let dish = viewModel.dishesSubject.value[indexPath.row]
-//viewModel.tableCellTapped(dish)
