@@ -31,7 +31,7 @@ final class DishesCompositionalLayout: UICollectionViewCompositionalLayout {
                     elementKind: UICollectionView.elementKindSectionHeader,
                     alignment: .top)
             ]
-            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 20, bottom: 10, trailing: 20)
             section.orthogonalScrollingBehavior = .continuous
             
             return section

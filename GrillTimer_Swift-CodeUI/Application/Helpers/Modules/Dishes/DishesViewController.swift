@@ -161,7 +161,7 @@ final class DishesViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(22)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.9)
-            make.height.equalTo(40)
+            make.height.equalTo(38)
         }
         
         collectionView.snp.makeConstraints { make in

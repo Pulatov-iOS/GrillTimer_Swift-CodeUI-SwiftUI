@@ -39,7 +39,7 @@ final class DishesCollectionCell: UICollectionViewCell {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.manrope(ofSize: 20, style: .bold)
+        label.font = UIFont.manrope(ofSize: 18, style: .bold)
         return label
     }()
     

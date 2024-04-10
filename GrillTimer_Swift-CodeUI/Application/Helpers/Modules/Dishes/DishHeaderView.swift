@@ -13,7 +13,7 @@ final class DishHeaderView: UICollectionReusableView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .Color.Main.text
-        label.font = UIFont.manrope(ofSize: 20, style: .bold)
+        label.font = UIFont.manrope(ofSize: 22, style: .bold)
         return label
     }()
     
