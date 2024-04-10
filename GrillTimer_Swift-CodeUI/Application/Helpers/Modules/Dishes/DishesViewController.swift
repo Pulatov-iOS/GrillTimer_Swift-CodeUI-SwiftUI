@@ -18,8 +18,6 @@ enum MeatType: CaseIterable {
     case chicken
     case lamb
     case turkey
-    case duck
-    case rabbit
 }
 
 final class DishesViewController: UIViewController {
@@ -43,8 +41,6 @@ final class DishesViewController: UIViewController {
         MeatType.chicken: NSLocalizedString("App.Dishes.Meat.Chicken", comment: ""),
         MeatType.lamb: NSLocalizedString("App.Dishes.Meat.Lamb", comment: ""),
         MeatType.turkey: NSLocalizedString("App.Dishes.Meat.Turkey", comment: ""),
-        MeatType.duck: NSLocalizedString("App.Dishes.Meat.Duck", comment: ""),
-        MeatType.rabbit: NSLocalizedString("App.Dishes.Meat.Rabbit", comment: "")
     ]
     
     // MARK: - UI Properties
@@ -76,7 +72,7 @@ final class DishesViewController: UIViewController {
         segment.selectedSegmentIndex = 0
         segment.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
         segment.selectedSegmentTintColor = UIColor(resource: .Color.Dish.buttonSegmentedControl)
-        segment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.manrope(ofSize: 16, style: .regular), NSAttributedString.Key.foregroundColor: UIColor(resource: .Color.Main.text)], for: .normal)
+        segment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.manrope(ofSize: 16, style: .medium), NSAttributedString.Key.foregroundColor: UIColor(resource: .Color.Main.text)], for: .normal)
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
         return segment
     }()
@@ -165,7 +161,7 @@ final class DishesViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(22)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.9)
-            make.height.equalTo(35)
+            make.height.equalTo(40)
         }
         
         collectionView.snp.makeConstraints { make in

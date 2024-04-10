@@ -22,9 +22,25 @@ final class TabBarItem: UIView {
     private let leftItem = UIImageView()
     private let centerItem = UIImageView()
     private let rightItem = UIImageView()
-    private let leftImageView = UIImageView(image: .Image.TabBar.leftItem)
-    private let centerImageView = UIImageView(image: .Image.TabBar.centerItemDisabled)
-    private let rightImageView = UIImageView(image: .Image.TabBar.rightItemDisabled)
+    
+    private let leftImageView: UIImageView = {
+        let image = UIImageView(image: .Image.TabBar.leftItem)
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    private let centerImageView: UIImageView = {
+        let image =  UIImageView(image: .Image.TabBar.centerItemDisabled)
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    private let rightImageView: UIImageView = {
+        let image =  UIImageView(image: .Image.TabBar.rightItemDisabled)
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
     private let backgroundView = UIView()
     
     // MARK: - Init
@@ -67,9 +83,9 @@ final class TabBarItem: UIView {
         
         leftImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(30)
-            make.width.equalTo(35)
-            make.height.equalTo(35)
+            make.leading.equalToSuperview().offset(25)
+            make.width.equalTo(50)
+            make.height.equalTo(50)
         }
         
         centerItem.snp.makeConstraints { make in
@@ -78,9 +94,10 @@ final class TabBarItem: UIView {
         }
         
         centerImageView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalTo(35)
-            make.height.equalTo(35)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-3)
+            make.width.equalTo(50)
+            make.height.equalTo(50)
         }
         
         rightItem.snp.makeConstraints { make in
@@ -91,10 +108,10 @@ final class TabBarItem: UIView {
         }
         
         rightImageView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(45)
-            make.width.equalTo(35)
-            make.height.equalTo(35)
+            make.centerY.equalToSuperview().offset(1)
+            make.trailing.equalToSuperview().inset(41)
+            make.width.equalTo(45)
+            make.height.equalTo(45)
         }
         
         backgroundView.snp.makeConstraints { make in

@@ -191,23 +191,6 @@
         }
       }
     },
-    "App.Dishes.Meat.Duck" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Duck"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Утка"
-          }
-        }
-      }
-    },
     "App.Dishes.Meat.Lamb" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -238,23 +221,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Свинина"
-          }
-        }
-      }
-    },
-    "App.Dishes.Meat.Rabbit" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rabbit"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Кролик"
           }
         }
       }
