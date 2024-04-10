@@ -33,6 +33,7 @@ Pods/
 
 # Ignore configuration files
 *.xcuserstate
+googleservice-info.plist
 
 # Ignore Swift Package Manager configuration files
 /.swiftpm/
