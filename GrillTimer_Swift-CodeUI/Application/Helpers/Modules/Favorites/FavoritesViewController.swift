@@ -1,10 +1,3 @@
-//
-//  FavoritesViewController.swift
-//  GrillTimer_Swift-CodeUI
-//
-//  Created by Alexander on 11.04.24.
-//
-
 import UIKit
 import SnapKit
 import Combine
@@ -41,7 +34,7 @@ final class FavoritesViewController: UIViewController {
         textField.layer.cornerRadius = 22.5
         textField.layer.masksToBounds = true
         textField.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
-//        textField.addTarget(self, action: #selector(searchTextFieldDidChange(_:)), for: .editingChanged)
+        textField.addTarget(FavoritesViewController.self, action: #selector(searchTextFieldDidChange(_:)), for: .editingChanged)
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
         textField.leftView = paddingView
         textField.leftViewMode = .always
@@ -58,6 +51,25 @@ final class FavoritesViewController: UIViewController {
         button.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
         button.layer.cornerRadius = 17.5
         return button
+    }()
+    
+    private lazy var collectionView: UICollectionView = { [unowned self] in
+        let layout = FavoritesCompositionalLayout()
+        let collection = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
+        collection.backgroundColor = .clear
+        collection.showsVerticalScrollIndicator = false
+        collection.register(FavoritesCollectionCell.self, forCellWithReuseIdentifier: "FavoritesCollectionCell")
+        return collection
+    }()
+    
+    private lazy var dataSource: UICollectionViewDiffableDataSource<Int, Dish> = {
+        let dataSource = UICollectionViewDiffableDataSource<Int, Dish>(collectionView: self.collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, item: Dish) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCollectionCell.reuseIdentifier, for: indexPath) as? FavoritesCollectionCell else { return nil }
+            cell.setInformation(item)
+            return cell
+        }
+        return dataSource
     }()
     
     private let tabBar: TabBarItem
@@ -85,7 +97,9 @@ final class FavoritesViewController: UIViewController {
         addSubviews()
         configureConstraints()
 //        bind()
-//        initialSnapshot()
+        initialSnapshot()
+        
+        viewModel.loadDishes()
     }
     
     // MARK: - Methods
@@ -94,7 +108,7 @@ final class FavoritesViewController: UIViewController {
     }
     
     private func addSubviews() {
-        view.addSubviews([titleLabel, settingsButton, searchTextField, deleteSearchTextButton, backgroundTabBarView, tabBar])
+        view.addSubviews([titleLabel, settingsButton, searchTextField, deleteSearchTextButton, collectionView, backgroundTabBarView, tabBar])
     }
     
     private func configureConstraints() {
@@ -123,6 +137,11 @@ final class FavoritesViewController: UIViewController {
             make.height.equalTo(35)
         }
         
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom).offset(10)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+        
         tabBar.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(30)
             make.width.equalToSuperview()
@@ -132,5 +151,16 @@ final class FavoritesViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         }
+    }
+    
+    private func initialSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Dish>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(viewModel.userDishesSubject.value)
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    @objc private func searchTextFieldDidChange(_ textField: UITextField) {
+        viewModel.searchDishes(textField.text ?? "")
     }
 }

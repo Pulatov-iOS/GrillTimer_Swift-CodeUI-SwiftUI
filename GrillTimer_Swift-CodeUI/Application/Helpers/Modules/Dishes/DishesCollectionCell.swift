@@ -1,10 +1,3 @@
-//
-//  DishesCollectionCell.swift
-//  GrillTimer_Swift-CodeUI
-//
-//  Created by Alexander on 6.04.24.
-//
-
 import UIKit
 import SnapKit
 import Combine
@@ -15,7 +8,7 @@ final class DishesCollectionCell: UICollectionViewCell {
     var cellTappedPublisher = PassthroughSubject<Void, Never>()
     static let reuseIdentifier = "DishesCollectionCell"
     
-    // MARK: Private Properties
+    // MARK:  - UI Properties
     private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
@@ -71,6 +64,7 @@ final class DishesCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Methods
     private func addSubviews() {
         contentView.addSubview(containerView)
         containerView.addSubviews([imageView, nameLabel, avgTimesValueLabel, avgTimesUnitLabel])
@@ -106,7 +100,7 @@ final class DishesCollectionCell: UICollectionViewCell {
   
     }
     
-    func setInformation(_ dish: Dish, sortingType: SortingType) {
+    func setInformation(_ dish: DishDTO, sortingType: SortingType) {
         let sortingTypeName: String
         if sortingType == .meat {
             sortingTypeName = SortingType.dish.rawValue + "." + dish.dishType.prefix(1).uppercased() + dish.dishType.dropFirst()

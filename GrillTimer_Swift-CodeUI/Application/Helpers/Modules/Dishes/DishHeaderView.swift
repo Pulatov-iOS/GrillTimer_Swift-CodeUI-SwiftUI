@@ -1,10 +1,3 @@
-//
-//  DishHeaderView.swift
-//  GrillTimer_Swift-CodeUI
-//
-//  Created by Alexander on 6.04.24.
-//
-
 import UIKit
 
 final class DishHeaderView: UICollectionReusableView {

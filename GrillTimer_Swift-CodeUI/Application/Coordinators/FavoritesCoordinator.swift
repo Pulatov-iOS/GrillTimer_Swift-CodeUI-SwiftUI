@@ -1,10 +1,3 @@
-//
-//  FavoritesCoordinator.swift
-//  GrillTimer_Swift-CodeUI
-//
-//  Created by Alexander on 11.04.24.
-//
-
 import UIKit
 
 final class FavoritesCoordinator {
@@ -22,8 +15,10 @@ final class FavoritesCoordinator {
     }
     
     private func showFavoritesScreen() {
+        let coreDataManager = CoreDataManager.instance
+        
         let view = FavoritesViewController(tabBar: tabBar)
-        let viewModel = FavoritesViewModel()
+        let viewModel = FavoritesViewModel(coreDataManager: coreDataManager)
         view.viewModel = viewModel
         navigationController.setViewControllers([view], animated: false)
     }

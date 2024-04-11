@@ -87,9 +87,9 @@ final class DishesViewController: UIViewController {
         return collection
     }()
     
-    private lazy var dataSource: UICollectionViewDiffableDataSource<AnyHashable, Dish> = {
-        let dataSource = UICollectionViewDiffableDataSource<AnyHashable, Dish>(collectionView: self.collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, item: Dish) -> UICollectionViewCell? in
+    private lazy var dataSource: UICollectionViewDiffableDataSource<AnyHashable, DishDTO> = {
+        let dataSource = UICollectionViewDiffableDataSource<AnyHashable, DishDTO>(collectionView: self.collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, item: DishDTO) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishesCollectionCell.reuseIdentifier, for: indexPath) as? DishesCollectionCell else { return nil }
             cell.setInformation(item, sortingType: self.viewModel.currentSortingSubject.value)
             return cell
@@ -201,8 +201,8 @@ final class DishesViewController: UIViewController {
             .store(in: &cancellables)
     }
     
-    func initialSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<AnyHashable, Dish>()
+    private func initialSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<AnyHashable, DishDTO>()
     
         if viewModel.currentSortingSubject.value == .dish {
             snapshot.appendSections(DishType.allCases)
@@ -222,7 +222,7 @@ final class DishesViewController: UIViewController {
     }
     
     @objc func settingsButtonTapped() {
-//        viewModel.settingsButtonTapped()
+
     }
     
     @objc func segmentedControlTypeSortingChanged(_ sender: UISegmentedControl) {

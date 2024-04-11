@@ -1,6 +1,40 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Add.Timer.SizeMeat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thickness (size) of the meat"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Размер (толщина) мяса"
+          }
+        }
+      }
+    },
+    "Add.Timer.UnitSizeMeat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cm"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "см"
+          }
+        }
+      }
+    },
     "App.Dishes.(sortingTypeName)" : {
 
     },
@@ -293,6 +327,23 @@
         }
       }
     },
+    "App.Favorites.CollectionCell.UnitCookingTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "min"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "мин"
+          }
+        }
+      }
+    },
     "App.Favorites.NavigationTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -323,6 +374,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поиск..."
+          }
+        }
+      }
+    },
+    "App.Timer.NavigationTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таймер"
           }
         }
       }

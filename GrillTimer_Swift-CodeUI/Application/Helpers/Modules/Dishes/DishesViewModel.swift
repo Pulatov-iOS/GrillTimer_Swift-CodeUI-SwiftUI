@@ -9,8 +9,8 @@ final class DishesViewModel {
     
     // MARK: - Public Properties
     let firebaseManager: FirebaseManager
-    var showDishScreen: ((Dish) -> Void)?
-    var dishesSubject: CurrentValueSubject<[Dish], DataError> { firebaseManager.dishesSubject }
+    var showDishScreen: ((DishDTO) -> Void)?
+    var dishesSubject: CurrentValueSubject<[DishDTO], DataError> { firebaseManager.dishesSubject }
     var currentSortingSubject = CurrentValueSubject<SortingType, Never>(.dish)
     
     init(firebaseManager: FirebaseManager) {
@@ -21,7 +21,7 @@ final class DishesViewModel {
         currentSortingSubject.send(type)
     }
     
-    func tableCellTapped(_ dish: Dish) {
+    func tableCellTapped(_ dish: DishDTO) {
         showDishScreen?(dish)
     }
 }

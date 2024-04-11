@@ -9,6 +9,7 @@ final class RootCoordinator {
     private var selectedTabBarItem: TypeTabBar = .left
 
     private var dishesCoordinator: DishesCoordinator?
+    private var timerCoordinator: TimerCoordinator?
     private var favoritesCoordinator: FavoritesCoordinator?
 
     init(window: UIWindow) {
@@ -19,6 +20,7 @@ final class RootCoordinator {
         tabBar.delegate = self
         
         dishesCoordinator = DishesCoordinator(navigationController: initialNavigationController, tabBar: tabBar)
+        timerCoordinator = TimerCoordinator(navigationController: initialNavigationController)
         favoritesCoordinator = FavoritesCoordinator(navigationController: initialNavigationController, tabBar: tabBar)
 
         if let coordinator = dishesCoordinator {
@@ -41,7 +43,7 @@ extension RootCoordinator: TabBarItemDelegate {
     }
     
     func centerItemTapped(_ cell: TabBarItem) {
-        if let coordinator = dishesCoordinator {
+        if let coordinator = timerCoordinator {
             selectedTabBarItem = .center
             coordinator.start()
         }
