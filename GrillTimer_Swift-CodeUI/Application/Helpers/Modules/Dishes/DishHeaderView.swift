@@ -1,10 +1,3 @@
-//
-//  DishHeaderView.swift
-//  GrillTimer_Swift-CodeUI
-//
-//  Created by Alexander on 6.04.24.
-//
-
 import UIKit
 
 final class DishHeaderView: UICollectionReusableView {
@@ -13,7 +6,7 @@ final class DishHeaderView: UICollectionReusableView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .Color.Main.text
-        label.font = UIFont.manrope(ofSize: 20, style: .bold)
+        label.font = UIFont.manrope(ofSize: 22, style: .bold)
         return label
     }()
     

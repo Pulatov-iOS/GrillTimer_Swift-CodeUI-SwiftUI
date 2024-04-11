@@ -1,6 +1,6 @@
 import FirebaseFirestoreSwift
 
-struct Dish: Codable, Hashable {
+struct DishDTO: Codable, Hashable {
     
     @DocumentID var id: String?
     var meatType: String
@@ -8,9 +8,6 @@ struct Dish: Codable, Hashable {
     var averageCookingTimes: String
     var instructions: String
     
-    
-//    var cooking_time: [Double]
-//    var doneness: [String]
-//    var grill_temperature: [Double]
-
+    var favoriteName: String?
+    var cookingTime: String?
 }

@@ -2,11 +2,6 @@ import Combine
 import FirebaseFirestore
 import FirebaseStorage
 
-protocol FirebaseManager: AnyObject {
-    static var instance: Self { get }
-    var dishesSubject: CurrentValueSubject<[Dish], DataError> { get }
-}
-
 enum DataError: Error {
     case error(String)
 }
@@ -15,15 +10,15 @@ enum FirebaseKeys {
     static let pathDishes = "Dish"
 }
 
-final class DefaultFirebaseManager: FirebaseManager, NSCopying {
+final class FirebaseManager: NSCopying {
     
-    static let instance = DefaultFirebaseManager()
+    static let instance = FirebaseManager()
     private init(){
         fetchDishes()
     }
     
     // MARK: - Public Properties
-    lazy var dishesSubject = CurrentValueSubject<[Dish], DataError>([])
+    lazy var dishesSubject = CurrentValueSubject<[DishDTO], DataError>([])
     
     // MARK: - Private Properties
     private let db = Firestore.firestore()
@@ -38,13 +33,13 @@ final class DefaultFirebaseManager: FirebaseManager, NSCopying {
             }
             
             let dishes = snapshot?.documents.compactMap {
-                try? $0.data(as: Dish.self)
+                try? $0.data(as: DishDTO.self)
             } ?? []
             self.dishesSubject.send(dishes)
         }
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        return DefaultFirebaseManager.instance
+        return FirebaseManager.instance
     }
 }

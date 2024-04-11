@@ -71,7 +71,7 @@ final class DishesViewController: UIViewController {
         ])
         segment.selectedSegmentIndex = 0
         segment.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
-        segment.selectedSegmentTintColor = UIColor(resource: .Color.Dish.buttonSegmentedControl)
+        segment.selectedSegmentTintColor = UIColor(resource: .Color.Dishes.buttonSegmentedControl)
         segment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.manrope(ofSize: 16, style: .medium), NSAttributedString.Key.foregroundColor: UIColor(resource: .Color.Main.text)], for: .normal)
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
         return segment
@@ -87,9 +87,9 @@ final class DishesViewController: UIViewController {
         return collection
     }()
     
-    private lazy var dataSource: UICollectionViewDiffableDataSource<AnyHashable, Dish> = {
-        let dataSource = UICollectionViewDiffableDataSource<AnyHashable, Dish>(collectionView: self.collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, item: Dish) -> UICollectionViewCell? in
+    private lazy var dataSource: UICollectionViewDiffableDataSource<AnyHashable, DishDTO> = {
+        let dataSource = UICollectionViewDiffableDataSource<AnyHashable, DishDTO>(collectionView: self.collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, item: DishDTO) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishesCollectionCell.reuseIdentifier, for: indexPath) as? DishesCollectionCell else { return nil }
             cell.setInformation(item, sortingType: self.viewModel.currentSortingSubject.value)
             return cell
@@ -132,16 +132,20 @@ final class DishesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
  
+        configureUI()
         addSubviews()
         configureConstraints()
-        configureUI()
         bind()
         initialSnapshot()
     }
     
-    // MARK: - Helpers
+    // MARK: - Methods
+    private func configureUI() {
+        view.backgroundColor = UIColor(resource: .Color.Main.background)
+    }
+    
     private func addSubviews() {
-        view.addSubviews([titleLabel, settingsButton ,segmentedControl, collectionView, backgroundTabBarView, tabBar])
+        view.addSubviews([titleLabel, settingsButton, segmentedControl, collectionView, backgroundTabBarView, tabBar])
     }
     
     private func configureConstraints() {
@@ -161,7 +165,7 @@ final class DishesViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(22)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.9)
-            make.height.equalTo(40)
+            make.height.equalTo(38)
         }
         
         collectionView.snp.makeConstraints { make in
@@ -178,10 +182,6 @@ final class DishesViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         }
-    }
-    
-    private func configureUI() {
-        view.backgroundColor = UIColor(resource: .Color.Main.background)
     }
     
     private func bind() {
@@ -201,8 +201,8 @@ final class DishesViewController: UIViewController {
             .store(in: &cancellables)
     }
     
-    func initialSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<AnyHashable, Dish>()
+    private func initialSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<AnyHashable, DishDTO>()
     
         if viewModel.currentSortingSubject.value == .dish {
             snapshot.appendSections(DishType.allCases)
@@ -222,7 +222,7 @@ final class DishesViewController: UIViewController {
     }
     
     @objc func settingsButtonTapped() {
-//        viewModel.settingsButtonTapped()
+
     }
     
     @objc func segmentedControlTypeSortingChanged(_ sender: UISegmentedControl) {
