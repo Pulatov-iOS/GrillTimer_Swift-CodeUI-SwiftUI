@@ -8,7 +8,8 @@ final class RootCoordinator {
     private let tabBar = TabBarItem()
     private var selectedTabBarItem: TypeTabBar = .left
 
-    private var dishCoordinator: DishCoordinator?
+    private var dishesCoordinator: DishesCoordinator?
+    private var favoritesCoordinator: FavoritesCoordinator?
 
     init(window: UIWindow) {
         self.window = window
@@ -17,9 +18,10 @@ final class RootCoordinator {
     func start() {
         tabBar.delegate = self
         
-        dishCoordinator = DishCoordinator(navigationController: initialNavigationController, tabBar: tabBar)
+        dishesCoordinator = DishesCoordinator(navigationController: initialNavigationController, tabBar: tabBar)
+        favoritesCoordinator = FavoritesCoordinator(navigationController: initialNavigationController, tabBar: tabBar)
 
-        if let coordinator = dishCoordinator {
+        if let coordinator = dishesCoordinator {
             coordinator.start()
         }
         
@@ -31,7 +33,7 @@ final class RootCoordinator {
 extension RootCoordinator: TabBarItemDelegate {
     
     func leftItemTapped(_ cell: TabBarItem) {
-        if let coordinator = dishCoordinator, selectedTabBarItem != .left {
+        if let coordinator = dishesCoordinator, selectedTabBarItem != .left {
             tabBar.selected(.left)
             selectedTabBarItem = .left
             coordinator.start()
@@ -39,14 +41,14 @@ extension RootCoordinator: TabBarItemDelegate {
     }
     
     func centerItemTapped(_ cell: TabBarItem) {
-        if let coordinator = dishCoordinator {
+        if let coordinator = dishesCoordinator {
             selectedTabBarItem = .center
             coordinator.start()
         }
     }
     
     func rightItemTapped(_ cell: TabBarItem) {
-        if let coordinator = dishCoordinator, selectedTabBarItem != .right {
+        if let coordinator = favoritesCoordinator, selectedTabBarItem != .right {
             tabBar.selected(.right)
             selectedTabBarItem = .right
             coordinator.start()

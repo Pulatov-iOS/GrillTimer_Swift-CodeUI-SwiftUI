@@ -71,7 +71,7 @@ final class DishesViewController: UIViewController {
         ])
         segment.selectedSegmentIndex = 0
         segment.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
-        segment.selectedSegmentTintColor = UIColor(resource: .Color.Dish.buttonSegmentedControl)
+        segment.selectedSegmentTintColor = UIColor(resource: .Color.Dishes.buttonSegmentedControl)
         segment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.manrope(ofSize: 16, style: .medium), NSAttributedString.Key.foregroundColor: UIColor(resource: .Color.Main.text)], for: .normal)
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
         return segment
@@ -132,16 +132,20 @@ final class DishesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
  
+        configureUI()
         addSubviews()
         configureConstraints()
-        configureUI()
         bind()
         initialSnapshot()
     }
     
-    // MARK: - Helpers
+    // MARK: - Methods
+    private func configureUI() {
+        view.backgroundColor = UIColor(resource: .Color.Main.background)
+    }
+    
     private func addSubviews() {
-        view.addSubviews([titleLabel, settingsButton ,segmentedControl, collectionView, backgroundTabBarView, tabBar])
+        view.addSubviews([titleLabel, settingsButton, segmentedControl, collectionView, backgroundTabBarView, tabBar])
     }
     
     private func configureConstraints() {
@@ -178,10 +182,6 @@ final class DishesViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         }
-    }
-    
-    private func configureUI() {
-        view.backgroundColor = UIColor(resource: .Color.Main.background)
     }
     
     private func bind() {

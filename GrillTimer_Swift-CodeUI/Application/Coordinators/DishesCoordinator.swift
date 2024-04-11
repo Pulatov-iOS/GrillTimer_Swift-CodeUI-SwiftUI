@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DishCoordinator {
+final class DishesCoordinator {
     
     private let navigationController: UINavigationController
     private let tabBar: TabBarItem
@@ -18,10 +18,10 @@ final class DishCoordinator {
     }
     
     func start() {
-        showDishScreen()
+        showDishesScreen()
     }
     
-    private func showDishScreen() {
+    private func showDishesScreen() {
         let firebaseManager = DefaultFirebaseManager.instance
         
         let view = DishesViewController(tabBar: tabBar)

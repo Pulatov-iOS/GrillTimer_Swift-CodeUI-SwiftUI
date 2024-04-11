@@ -53,7 +53,7 @@ final class DishesCollectionCell: UICollectionViewCell {
         let label = UILabel()
         label.text = NSLocalizedString("App.Dishes.Cell.UnitTimesLabel", comment: "")
         label.font = UIFont.manrope(ofSize: 14, style: .medium)
-        label.textColor = .Color.Dish.Cell.unitText
+        label.textColor = .Color.Dishes.Cell.unitText
         return label
     }()
     
