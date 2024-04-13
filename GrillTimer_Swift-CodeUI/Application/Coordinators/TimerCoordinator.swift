@@ -9,12 +9,12 @@ final class TimerCoordinator {
         self.navigationController = navigationController
     }
     
-    func start() {
-        showTimerScreen()
+    func start(dish: DishDTO) {
+        showTimerScreen(dish)
     }
     
-    private func showTimerScreen() {
-        let viewModel = TimerViewModel()
+    private func showTimerScreen(_ dish: DishDTO) {
+        let viewModel = TimerViewModel(dish: dish)
         let view = UIHostingController(rootView: TimerView().environmentObject(viewModel))
         
         navigationController.modalPresentationStyle = .formSheet

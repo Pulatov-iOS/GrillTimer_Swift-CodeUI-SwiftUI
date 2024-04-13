@@ -21,7 +21,9 @@ final class DishesViewModel {
         currentSortingSubject.send(type)
     }
     
-    func tableCellTapped(_ dish: DishDTO) {
-        showDishScreen?(dish)
+    func tableCellTapped(_ dishId: String) {
+        if let dish = dishesSubject.value.first(where: { $0.id == dishId }) {
+            showDishScreen?(dish)
+        }
     }
 }

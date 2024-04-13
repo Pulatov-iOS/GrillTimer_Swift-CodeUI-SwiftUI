@@ -14,7 +14,6 @@ struct TimerView: View {
 
     // MARK: - Private Properties
     @State private var isStartView = true
-    @State private var sizeMeat: Int = 4
     
     var body: some View {
         VStack {
@@ -42,37 +41,12 @@ struct TimerView: View {
             .padding(.top, 17)
             
             if isStartView {
-                VStack(alignment: .leading) {
-                    Text(NSLocalizedString("Add.Timer.SizeMeat", comment: "") + ":")
-                        .font(.init(UIFont.manrope(ofSize: 18, style: .medium)))
-                        .foregroundStyle(Color(UIColor(resource: .Color.Main.text)))
-                        .multilineTextAlignment(.leading)
-                        .padding(.leading, 15)
-                    
-                    Slider(value: Binding(get: {
-                        Double(sizeMeat)
-                    }, set: {
-                        sizeMeat = Int($0)
-                    }), in: 2...8, step: 1)
-                        .padding(.horizontal, 15)
-                    
-                    Text("\(sizeMeat) " + NSLocalizedString("Add.Timer.UnitSizeMeat", comment: ""))
-                        .font(.init(UIFont.manrope(ofSize: 18, style: .medium)))
-                        .foregroundStyle(Color(UIColor(resource: .Color.Main.text)))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .background(
-                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color(UIColor(resource: .Color.Main.backgroundItem)))
-                                .frame(width: 100, height: 40)
-                         )
-                        .padding(.top, 7)
-                        
-                }
-                .padding(.top, 15)
+                SettingsTimerView()
             }
             Spacer()
         }
         .background(Color(UIColor(resource: .Color.Main.background)))
+        .environmentObject(viewModel)
     }
 }
 

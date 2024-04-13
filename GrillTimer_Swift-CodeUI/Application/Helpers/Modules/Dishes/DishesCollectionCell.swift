@@ -5,8 +5,11 @@ import Combine
 final class DishesCollectionCell: UICollectionViewCell {
     
     // MARK: - Public Properties
-    var cellTappedPublisher = PassthroughSubject<Void, Never>()
+    var cellTappedPublisher = PassthroughSubject<String, Never>()
     static let reuseIdentifier = "DishesCollectionCell"
+    
+    // MARK: - Private Properties
+    private var dishId: String?
     
     // MARK:  - UI Properties
     private let containerView: UIView = {
@@ -56,7 +59,6 @@ final class DishesCollectionCell: UICollectionViewCell {
         
         addSubviews()
         configureConstraints()
-        configureUI()
         bind()
     }
     
@@ -96,10 +98,6 @@ final class DishesCollectionCell: UICollectionViewCell {
         }
     }
     
-    private func configureUI() {
-  
-    }
-    
     func setInformation(_ dish: DishDTO, sortingType: SortingType) {
         let sortingTypeName: String
         if sortingType == .meat {
@@ -110,10 +108,12 @@ final class DishesCollectionCell: UICollectionViewCell {
  
         let labelName = NSLocalizedString("App.Dishes.\(sortingTypeName)", comment: "")
         nameLabel.text = labelName
-        avgTimesValueLabel.text = dish.averageCookingTimes
+        avgTimesValueLabel.text = dish.сookingTime
         
         let imageName = "Image/Menu/" + dish.dishType.prefix(1).uppercased() + dish.dishType.dropFirst() + "/\(dish.meatType)"
         imageView.image = UIImage(named: imageName)
+        
+        dishId = dish.id
     }
     
     private func bind() {
@@ -122,6 +122,6 @@ final class DishesCollectionCell: UICollectionViewCell {
     }
     
     @objc private func cellTapped() {
-        cellTappedPublisher.send()
+        cellTappedPublisher.send(dishId ?? "")
     }
 }

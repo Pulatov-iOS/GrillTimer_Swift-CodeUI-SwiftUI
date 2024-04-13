@@ -92,6 +92,11 @@ final class DishesViewController: UIViewController {
             (collectionView: UICollectionView, indexPath: IndexPath, item: DishDTO) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishesCollectionCell.reuseIdentifier, for: indexPath) as? DishesCollectionCell else { return nil }
             cell.setInformation(item, sortingType: self.viewModel.currentSortingSubject.value)
+            cell.cellTappedPublisher
+                .sink { [weak self] id in
+                    self?.viewModel.tableCellTapped(id)
+                }
+                .store(in: &self.cancellables)
             return cell
         }
         

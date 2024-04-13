@@ -45,7 +45,7 @@ extension RootCoordinator: TabBarItemDelegate {
     func centerItemTapped(_ cell: TabBarItem) {
         if let coordinator = timerCoordinator {
             selectedTabBarItem = .center
-            coordinator.start()
+            coordinator.start(dish: DishDTO(id: "", meatType: "", dishType: "", averageCookingTime: 0, сookingTime: ""))
         }
     }
     
