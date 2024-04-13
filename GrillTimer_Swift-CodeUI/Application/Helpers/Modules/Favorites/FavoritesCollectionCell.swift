@@ -87,7 +87,7 @@ final class FavoritesCollectionCell: UICollectionViewCell {
         nameFavoriteDishLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
             make.leading.equalToSuperview().offset(60)
-            make.trailing.equalTo(cookingTimeLabel.snp.leading).offset(-5)
+            make.width.equalTo(180)
         }
         
         dishTypeLabel.snp.makeConstraints { make in
@@ -107,9 +107,9 @@ final class FavoritesCollectionCell: UICollectionViewCell {
     }
     
     func setInformation(_ dish: Dish) {
-        if let name = dish.favoriteName, let time = dish.cookingTime {
+        if let name = dish.favoriteName {
             nameFavoriteDishLabel.text = name
-            cookingTimeLabel.text = time + " " + NSLocalizedString("App.Favorites.CollectionCell.UnitCookingTime", comment: "")
+            cookingTimeLabel.text = "\(dish.averageFavoriteCookingTime)" + " " + NSLocalizedString("App.Favorites.CollectionCell.UnitCookingTime", comment: "")
         }
         
         dishTypeLabel.text = dish.dishType

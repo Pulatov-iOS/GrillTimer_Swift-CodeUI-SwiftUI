@@ -11,12 +11,13 @@ struct SettingsTimerView: View {
     
     // MARK: - Public Properties
     @EnvironmentObject var viewModel: TimerViewModel
+    @Binding var isStartView: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 Text(NSLocalizedString("App.Dishes.Dish.\(viewModel.dish.dishType.prefix(1).capitalized)\(viewModel.dish.dishType.dropFirst())", comment: "") + ": " + NSLocalizedString("App.Dishes.Meat.\(viewModel.dish.meatType.prefix(1).capitalized)\(viewModel.dish.meatType.dropFirst())", comment: ""))
-                    .font(.init(UIFont.manrope(ofSize: 18, style: .medium)))
+                    .font(.init(UIFont.manrope(ofSize: 18, style: .bold)))
                     .foregroundStyle(Color(UIColor(resource: .Color.Timer.text)))
                     .background(
                         RoundedRectangle(cornerRadius: 20)
@@ -147,7 +148,8 @@ struct SettingsTimerView: View {
             
             VStack {
                 Button(action: {
-                    
+                    viewModel.startTimer()
+                    self.isStartView.toggle()
                 }) {
                     VStack{
                         Text(NSLocalizedString("App.Timer.StartButton", comment: ""))
@@ -169,5 +171,5 @@ struct SettingsTimerView: View {
 }
 
 #Preview {
-    SettingsTimerView()
+    SettingsTimerView(isStartView: .constant(true))
 }

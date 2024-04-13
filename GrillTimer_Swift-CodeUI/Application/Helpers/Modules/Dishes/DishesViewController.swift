@@ -26,7 +26,6 @@ final class DishesViewController: UIViewController {
     var viewModel: DishesViewModel!
     
     // MARK: Private Properties
-    private var cancellables = Set<AnyCancellable>()
     private let sectionHeaderTitles: [AnyHashable: String] = [
         DishType.skewers: NSLocalizedString("App.Dishes.Dish.Skewers", comment: ""),
         DishType.steak: NSLocalizedString("App.Dishes.Dish.Steak", comment: ""),
@@ -42,6 +41,7 @@ final class DishesViewController: UIViewController {
         MeatType.lamb: NSLocalizedString("App.Dishes.Meat.Lamb", comment: ""),
         MeatType.turkey: NSLocalizedString("App.Dishes.Meat.Turkey", comment: ""),
     ]
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - UI Properties
     private let titleLabel: UILabel = {

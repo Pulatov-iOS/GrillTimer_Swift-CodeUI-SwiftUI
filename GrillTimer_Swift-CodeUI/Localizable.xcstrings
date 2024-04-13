@@ -560,6 +560,23 @@
         }
       }
     },
+    "App.Timer.StopButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стоп"
+          }
+        }
+      }
+    },
     "App.Timer.Yes" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -573,6 +590,40 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Да"
+          }
+        }
+      }
+    },
+    "App.TimerDisplay.SaveButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
+          }
+        }
+      }
+    },
+    "App.TimerDisplay.TextFieldPlaceholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter dish name..."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите имя блюда..."
           }
         }
       }

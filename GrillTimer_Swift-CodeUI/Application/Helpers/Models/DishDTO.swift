@@ -6,8 +6,12 @@ struct DishDTO: Codable, Hashable {
     var meatType: String
     var dishType: String
     var averageCookingTime: Int
-    var сookingTime: String
+    var cookingTime: String
     
     var favoriteName: String?
-    var saveCookingTime: Int?
+    var averageFavoriteCookingTime: Int?
+    var sizeMeat: Int?
+    var grillTemperature: Int?
+    var meatTemperature: Int?
+    var isMarinade: Bool?
 }

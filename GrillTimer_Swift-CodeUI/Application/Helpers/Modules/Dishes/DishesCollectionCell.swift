@@ -108,7 +108,7 @@ final class DishesCollectionCell: UICollectionViewCell {
  
         let labelName = NSLocalizedString("App.Dishes.\(sortingTypeName)", comment: "")
         nameLabel.text = labelName
-        avgTimesValueLabel.text = dish.сookingTime
+        avgTimesValueLabel.text = dish.cookingTime
         
         let imageName = "Image/Menu/" + dish.dishType.prefix(1).uppercased() + dish.dishType.dropFirst() + "/\(dish.meatType)"
         imageView.image = UIImage(named: imageName)

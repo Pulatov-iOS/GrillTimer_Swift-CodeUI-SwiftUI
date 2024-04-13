@@ -7,6 +7,9 @@ final class FavoritesViewController: UIViewController {
     // MARK: - Public Properties
     var viewModel: FavoritesViewModel!
     
+    // MARK: - Private Properties
+    private var cancellables = Set<AnyCancellable>()
+    
     // MARK: - UI Properties
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -96,7 +99,7 @@ final class FavoritesViewController: UIViewController {
         configureUI()
         addSubviews()
         configureConstraints()
-//        bind()
+        bind()
         initialSnapshot()
         
         viewModel.loadDishes()
@@ -151,6 +154,14 @@ final class FavoritesViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         }
+    }
+    
+    private func bind() {
+        viewModel.userDishesSubject
+            .sink { [weak self] _ in
+                self?.initialSnapshot()
+            }
+            .store(in: &cancellables)
     }
     
     private func initialSnapshot() {
