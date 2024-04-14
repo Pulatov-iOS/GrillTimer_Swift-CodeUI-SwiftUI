@@ -16,7 +16,7 @@ struct SettingsTimerView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
-                Text(NSLocalizedString("App.Dishes.Dish.\(viewModel.dish.dishType.prefix(1).capitalized)\(viewModel.dish.dishType.dropFirst())", comment: "") + ": " + NSLocalizedString("App.Dishes.Meat.\(viewModel.dish.meatType.prefix(1).capitalized)\(viewModel.dish.meatType.dropFirst())", comment: ""))
+                Text(NSLocalizedString("App.Dishes.Dish.\(viewModel.dish?.dishType.prefix(1).capitalized ?? "")\(viewModel.dish?.dishType.dropFirst() ?? "")", comment: "") + ": " + NSLocalizedString("App.Dishes.Meat.\(viewModel.dish?.meatType.prefix(1).capitalized ?? "")\(viewModel.dish?.meatType.dropFirst() ?? "")", comment: ""))
                     .font(.init(UIFont.manrope(ofSize: 18, style: .bold)))
                     .foregroundStyle(Color(UIColor(resource: .Color.Timer.text)))
                     .background(

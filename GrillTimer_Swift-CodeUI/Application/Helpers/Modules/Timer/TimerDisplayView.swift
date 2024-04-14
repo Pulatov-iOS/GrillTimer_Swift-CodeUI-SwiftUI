@@ -18,7 +18,7 @@ struct TimerDisplayView: View {
     var body: some View {
         VStack {
             ZStack {
-                if isSaveDish {
+                if isSaveDish && viewModel.dish != nil {
                     VStack {
                         HStack {
                             TextField(NSLocalizedString("App.TimerDisplay.TextFieldPlaceholder", comment: ""), text: $favoriteDishName)
@@ -34,6 +34,8 @@ struct TimerDisplayView: View {
                             Button(action: {
                                 if favoriteDishName != "" {
                                     viewModel.saveCurrentDish(favoriteDishName)
+                                    favoriteDishName = ""
+                                    isSaveDish.toggle()
                                 }
                             }) {
                                 VStack{
@@ -57,7 +59,7 @@ struct TimerDisplayView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 200, height: 200)
-                        .padding(.top, 135)
+                        .padding(.top, 121)
                     
                     HStack {
                         Button(action: {
@@ -73,6 +75,7 @@ struct TimerDisplayView: View {
                             .cornerRadius(10)
                         }
                         .padding()
+                        .disabled(viewModel.minusRemainingSeconds <= 60)
                         
                         Text(viewModel.remainingTime)
                             .font(.init(UIFont.manrope(ofSize: 30, style: .bold)))
@@ -121,6 +124,22 @@ struct TimerDisplayView: View {
                     .padding(.top, 5)
                     Spacer()
                 }
+            }
+            .alert(isPresented: Binding<Bool>(
+                get: { self.viewModel.saveFavoriteDishResult == .success || self.viewModel.saveFavoriteDishResult == .error },
+                set: { _ in }
+            )) {
+                Alert(
+                    title: Text(NSLocalizedString("App.TimerDisplay.AlertTitle", comment: "")),
+                    message: {
+                        if self.viewModel.saveFavoriteDishResult == .success {
+                            return Text(NSLocalizedString("App.TimerDisplay. AlertMessage.Success", comment: ""))
+                        } else {
+                            return Text(NSLocalizedString("App.TimerDisplay. AlertMessage.Error", comment: ""))
+                        }
+                    }(),
+                    dismissButton: .default(Text(NSLocalizedString("App.TimerDisplay. AlertButton", comment: "")))
+                )
             }
         }
     }

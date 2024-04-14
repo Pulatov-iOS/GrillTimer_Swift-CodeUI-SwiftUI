@@ -84,7 +84,7 @@
         }
       }
     },
-    "App.Dishes.Dish.(viewModel.dish.dishType.prefix(1).capitalized)(viewModel.dish.dishType.dropFirst())" : {
+    "App.Dishes.Dish.(viewModel.dish?.dishType.prefix(1).capitalized ?? \"\")(viewModel.dish?.dishType.dropFirst() ?? \"\")" : {
 
     },
     "App.Dishes.Dish.Kebab" : {
@@ -206,7 +206,7 @@
         }
       }
     },
-    "App.Dishes.Meat.(viewModel.dish.meatType.prefix(1).capitalized)(viewModel.dish.meatType.dropFirst())" : {
+    "App.Dishes.Meat.(viewModel.dish?.meatType.prefix(1).capitalized ?? \"\")(viewModel.dish?.meatType.dropFirst() ?? \"\")" : {
 
     },
     "App.Dishes.Meat.Beef" : {
@@ -596,6 +596,74 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Да"
+          }
+        }
+      }
+    },
+    "App.TimerDisplay. AlertButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ок"
+          }
+        }
+      }
+    },
+    "App.TimerDisplay. AlertMessage.Error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error While Saving Dish!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка при сохранении блюда!"
+          }
+        }
+      }
+    },
+    "App.TimerDisplay. AlertMessage.Success" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dish Successfully Saved!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блюдо успешно сохранено!"
+          }
+        }
+      }
+    },
+    "App.TimerDisplay.AlertTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Result"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Результат сохранения"
           }
         }
       }

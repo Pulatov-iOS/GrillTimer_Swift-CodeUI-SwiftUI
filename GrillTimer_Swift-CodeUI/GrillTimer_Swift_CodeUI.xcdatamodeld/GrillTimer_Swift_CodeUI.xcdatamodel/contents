@@ -13,4 +13,18 @@
         <attribute name="meatType" attributeType="String"/>
         <attribute name="sizeMeat" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="DishSave" representedClassName="DishSave" syncable="YES" codeGenerationType="class">
+        <attribute name="averageCookingTime" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="averageFavoriteCookingTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="cookingTime" attributeType="String"/>
+        <attribute name="currentTime" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dishType" attributeType="String"/>
+        <attribute name="favoriteName" optional="YES" attributeType="String"/>
+        <attribute name="grillTemperature" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="isMarinade" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="meatTemperature" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="meatType" attributeType="String"/>
+        <attribute name="sizeMeat" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
 </model>

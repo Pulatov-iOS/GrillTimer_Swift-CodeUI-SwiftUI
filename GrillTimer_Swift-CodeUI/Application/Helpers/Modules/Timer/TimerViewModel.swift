@@ -12,7 +12,7 @@ final class TimerViewModel: ObservableObject {
     
     // MARK: - Public Properties
     @Published var grillTemperatureString: String = NSLocalizedString("App.Timer.GrillTemperature.Middle", comment: "")
-    @Published var dish: DishDTO
+    @Published var dish: DishDTO?
     @Published var cookingTime: Int = 0 {
         didSet {
             remainingSeconds = cookingTime * 60
@@ -28,24 +28,22 @@ final class TimerViewModel: ObservableObject {
     }
     @Published var isTimerRunning = false
     @Published var remainingTime = ""
-    @Published var saveFavoriteDishResult: SaveResult = .success
+    @Published var minusRemainingSeconds = 0
+    @Published var saveFavoriteDishResult: SaveResult = .none
     
     // MARK: - Private Properties
     private var coreDataManager: CoreDataManager
     private var timer: Timer?
     private var remainingSeconds = 0 {
         didSet {
+            minusRemainingSeconds = remainingSeconds
             remainingTime = secondsToTimeString(remainingSeconds)
         }
     }
     private var cancellables = Set<AnyCancellable>()
     
     init(dish: DishDTO?, coreDataManager: CoreDataManager) {
-        if let dish = dish {
-            self.dish = dish
-        } else {
-            self.dish = DishDTO(meatType: "", dishType: "", averageCookingTime: 0, cookingTime: "") // убрать
-        }
+        self.dish = dish
         self.coreDataManager = coreDataManager
         
         setupCookingParameters()
@@ -106,6 +104,8 @@ final class TimerViewModel: ObservableObject {
     func stopTimer() {
         timer?.invalidate()
         isTimerRunning = false
+        
+        // сохранить
     }
     
     func changeTimerTime(_ addTimeSeconds: Int) {
@@ -115,11 +115,14 @@ final class TimerViewModel: ObservableObject {
     }
     
     func saveCurrentDish(_ favoriteDishName: String) {
+        guard let dish = dish else { return }
+            
         let favoriteDish = DishDTO(id: dish.id, meatType: dish.meatType, dishType: dish.dishType, averageCookingTime: dish.averageCookingTime, cookingTime: dish.cookingTime, favoriteName: favoriteDishName, averageFavoriteCookingTime: cookingTime, sizeMeat: self.sizeMeat, grillTemperature: self.grillTemperature, meatTemperature: self.meatTemperature, isMarinade: self.isMarinade)
         coreDataManager.saveDish(favoriteDish)
     }
  
     private func calculateCookingTime() {
+        guard let dish = dish else { return }
         var time = dish.averageCookingTime
         
         switch sizeMeat {
@@ -167,6 +170,10 @@ final class TimerViewModel: ObservableObject {
     }
     
     private func setupCookingParameters() {
+        guard let dish = dish else {
+            cookingTime = 10
+            return
+        }
         cookingTime = dish.averageCookingTime
 
         if let favoriteName = dish.favoriteName {
