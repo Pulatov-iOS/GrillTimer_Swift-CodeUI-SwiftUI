@@ -136,15 +136,16 @@ struct SettingsTimerView: View {
                         .font(.init(UIFont.manrope(ofSize: 30, style: .bold)))
                         .foregroundStyle(Color(UIColor(resource: .Color.Main.text)))
                 }
-                .padding(.top, 45)
+                .padding(.top, 12)
+                .padding(.trailing, 20)
                 
-                Image(uiImage: UIImage(resource: .Image.TabBar.centerItemDisabled))
+                Image(uiImage: UIImage(resource: .Image.Timer.timer))
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 180, height: 180)
+                    .frame(width: 160, height: 160)
             }
             .frame(maxWidth: .infinity)
-            .padding(.top, -20)
+            .padding(.top, 20)
             
             VStack {
                 Button(action: {

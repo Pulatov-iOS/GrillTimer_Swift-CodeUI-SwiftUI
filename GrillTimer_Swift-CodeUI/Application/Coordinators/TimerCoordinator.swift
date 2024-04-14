@@ -9,11 +9,11 @@ final class TimerCoordinator {
         self.navigationController = navigationController
     }
     
-    func start(dish: DishDTO) {
+    func start(dish: DishDTO?) {
         showTimerScreen(dish)
     }
     
-    private func showTimerScreen(_ dish: DishDTO) {
+    private func showTimerScreen(_ dish: DishDTO?) {
         let coreDataManager = CoreDataManager.instance
         
         let viewModel = TimerViewModel(dish: dish, coreDataManager: coreDataManager)

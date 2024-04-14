@@ -21,5 +21,10 @@ final class FavoritesCoordinator {
         let viewModel = FavoritesViewModel(coreDataManager: coreDataManager)
         view.viewModel = viewModel
         navigationController.setViewControllers([view], animated: false)
+        
+        viewModel.showTimerScreen = { [weak self] dish in
+            let timerCoordinator = TimerCoordinator(navigationController: self?.navigationController ?? UINavigationController())
+            timerCoordinator.start(dish: dish)
+        }
     }
 }

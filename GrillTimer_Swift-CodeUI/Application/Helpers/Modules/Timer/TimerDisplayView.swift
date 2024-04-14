@@ -53,15 +53,45 @@ struct TimerDisplayView: View {
                 }
                 
                 VStack {
-                    Image(uiImage: UIImage(resource: .Image.TabBar.centerItemDisabled))
+                    Image(uiImage: UIImage(resource: .Image.Timer.timer))
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 180, height: 180)
-                        .padding(.top, 118)
+                        .frame(width: 200, height: 200)
+                        .padding(.top, 135)
                     
-                    Text(viewModel.remainingTime)
-                        .font(.init(UIFont.manrope(ofSize: 30, style: .bold)))
-                        .foregroundStyle(Color(UIColor(resource: .Color.Main.text)))
+                    HStack {
+                        Button(action: {
+                            viewModel.changeTimerTime(-60)
+                        }) {
+                            VStack{
+                                Text("-")
+                                    .font(.init(UIFont.manrope(ofSize: 25, style: .bold)))
+                                    .foregroundStyle(Color(UIColor(resource: .Color.Main.text)))
+                            }
+                            .frame(width: 50, height: 50)
+                            .background(Color(UIColor(resource: .Color.Main.backgroundItem)))
+                            .cornerRadius(10)
+                        }
+                        .padding()
+                        
+                        Text(viewModel.remainingTime)
+                            .font(.init(UIFont.manrope(ofSize: 30, style: .bold)))
+                            .foregroundStyle(Color(UIColor(resource: .Color.Main.text)))
+                     
+                        Button(action: {
+                            viewModel.changeTimerTime(60)
+                        }) {
+                            VStack{
+                                Text("+")
+                                    .font(.init(UIFont.manrope(ofSize: 25, style: .bold)))
+                                    .foregroundStyle(Color(UIColor(resource: .Color.Main.text)))
+                            }
+                            .frame(width: 50, height: 50)
+                            .background(Color(UIColor(resource: .Color.Main.backgroundItem)))
+                            .cornerRadius(10)
+                        }
+                        .padding()
+                    }
                     
                     VStack {
                         Button(action: {

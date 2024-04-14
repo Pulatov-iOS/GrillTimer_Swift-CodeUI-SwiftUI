@@ -1,9 +1,14 @@
 import UIKit
+import Combine
 
 final class FavoritesCollectionCell: UICollectionViewCell {
     
     // MARK: - Public Properties
+    var cellTappedPublisher = PassthroughSubject<String, Never>()
     static let reuseIdentifier = "FavoritesCollectionCell"
+    
+    // MARK: - Private Properties
+    private var dishId: String?
     
     // MARK: - UI Properties
     private let containerView: UIView = {
@@ -19,7 +24,7 @@ final class FavoritesCollectionCell: UICollectionViewCell {
     
     private let timerImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(resource: .Image.TabBar.centerItemDisabled)
+        image.image = UIImage(resource: .Image.Timer.timer)
         image.contentMode = .scaleAspectFit
         return image
     }()
@@ -59,6 +64,7 @@ final class FavoritesCollectionCell: UICollectionViewCell {
         
         addSubviews()
         configureConstraints()
+        bind()
     }
     
     required init?(coder: NSCoder) {
@@ -79,9 +85,9 @@ final class FavoritesCollectionCell: UICollectionViewCell {
         
         timerImage.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
-            make.centerY.equalToSuperview().offset(-3)
-            make.width.equalTo(35)
-            make.height.equalTo(35)
+            make.centerY.equalToSuperview()
+            make.width.equalTo(31)
+            make.height.equalTo(31)
         }
         
         nameFavoriteDishLabel.snp.makeConstraints { make in
@@ -106,6 +112,15 @@ final class FavoritesCollectionCell: UICollectionViewCell {
         }
     }
     
+    private func bind() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
+        containerView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func cellTapped() {
+        cellTappedPublisher.send(dishId ?? "")
+    }
+    
     func setInformation(_ dish: Dish) {
         if let name = dish.favoriteName {
             nameFavoriteDishLabel.text = name
@@ -114,5 +129,7 @@ final class FavoritesCollectionCell: UICollectionViewCell {
         
         dishTypeLabel.text = dish.dishType
         meatTypeLabel.text = dish.meatType
+        
+        dishId = dish.id
     }
 }

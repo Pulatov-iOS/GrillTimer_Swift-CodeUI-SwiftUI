@@ -8,10 +8,12 @@ enum SortingType: String {
 final class DishesViewModel {
     
     // MARK: - Public Properties
-    let firebaseManager: FirebaseManager
-    var showDishScreen: ((DishDTO) -> Void)?
+    var showTimerScreen: ((DishDTO) -> Void)?
     var dishesSubject: CurrentValueSubject<[DishDTO], DataError> { firebaseManager.dishesSubject }
     var currentSortingSubject = CurrentValueSubject<SortingType, Never>(.dish)
+    
+    // MARK: - Private Properties
+    private  let firebaseManager: FirebaseManager
     
     init(firebaseManager: FirebaseManager) {
         self.firebaseManager = firebaseManager
@@ -23,7 +25,7 @@ final class DishesViewModel {
     
     func tableCellTapped(_ dishId: String) {
         if let dish = dishesSubject.value.first(where: { $0.id == dishId }) {
-            showDishScreen?(dish)
+            showTimerScreen?(dish)
         }
     }
 }

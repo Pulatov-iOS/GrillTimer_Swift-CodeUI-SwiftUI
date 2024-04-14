@@ -1,6 +1,6 @@
 import UIKit
 
-final class DishHeaderView: UICollectionReusableView {
+final class DishesHeaderView: UICollectionReusableView {
     
     // MARK: - UI Properties
     private let titleLabel: UILabel = {

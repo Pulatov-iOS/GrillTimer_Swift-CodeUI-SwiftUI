@@ -31,26 +31,26 @@ final class FavoritesViewController: UIViewController {
         return button
     }()
     
-    private let searchTextField: UITextField = {
+    private lazy var searchTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = NSLocalizedString("App.Favorites.SearchTextFieldPlaceholder", comment: "")
         textField.layer.cornerRadius = 22.5
         textField.layer.masksToBounds = true
         textField.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
-        textField.addTarget(FavoritesViewController.self, action: #selector(searchTextFieldDidChange(_:)), for: .editingChanged)
+        textField.addTarget(self, action: #selector(searchTextFieldDidChange(_:)), for: .editingChanged)
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
         textField.leftView = paddingView
         textField.leftViewMode = .always
         return textField
     }()
     
-    private let deleteSearchTextButton: UIButton = {
+    private lazy var deleteSearchTextButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor(resource: .Color.Favorites.deleteSearchButton)
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         let symbolConfigurationDelete = UIImage.SymbolConfiguration(pointSize: 18)
         button.setPreferredSymbolConfiguration(symbolConfigurationDelete, forImageIn: .normal)
-//        button.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
         button.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
         button.layer.cornerRadius = 17.5
         return button
@@ -61,6 +61,7 @@ final class FavoritesViewController: UIViewController {
         let collection = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
         collection.backgroundColor = .clear
         collection.showsVerticalScrollIndicator = false
+        collection.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 120, right: 0)
         collection.register(FavoritesCollectionCell.self, forCellWithReuseIdentifier: "FavoritesCollectionCell")
         return collection
     }()
@@ -70,6 +71,11 @@ final class FavoritesViewController: UIViewController {
             (collectionView: UICollectionView, indexPath: IndexPath, item: Dish) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCollectionCell.reuseIdentifier, for: indexPath) as? FavoritesCollectionCell else { return nil }
             cell.setInformation(item)
+            cell.cellTappedPublisher
+                .sink { [weak self] id in
+                    self?.viewModel.tableCellTapped(id)
+                }
+                .store(in: &self.cancellables)
             return cell
         }
         return dataSource
@@ -173,5 +179,9 @@ final class FavoritesViewController: UIViewController {
     
     @objc private func searchTextFieldDidChange(_ textField: UITextField) {
         viewModel.searchDishes(textField.text ?? "")
+    }
+    
+    @objc private func deleteButtonTapped(_ textField: UITextField) {
+        viewModel.deleteSearchResults()
     }
 }

@@ -82,8 +82,9 @@ final class DishesViewController: UIViewController {
         let collection = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
         collection.backgroundColor = .clear
         collection.showsVerticalScrollIndicator = false
+        collection.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 120, right: 0)
         collection.register(DishesCollectionCell.self, forCellWithReuseIdentifier: "DishesCollectionCell")
-        collection.register(DishHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "DishHeaderView")
+        collection.register(DishesHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "DishesHeaderView")
         return collection
     }()
     
@@ -101,7 +102,7 @@ final class DishesViewController: UIViewController {
         }
         
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DishHeaderView", for: indexPath) as? DishHeaderView else { fatalError("") }
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DishesHeaderView", for: indexPath) as? DishesHeaderView else { fatalError("") }
             let sectionIdentifier = dataSource.snapshot().sectionIdentifiers[indexPath.section]
             if let dishType = sectionIdentifier as? DishType {
                 let sectionType = self.sectionHeaderTitles[dishType] ?? ""
