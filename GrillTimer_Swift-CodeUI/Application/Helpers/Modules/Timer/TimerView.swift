@@ -96,6 +96,7 @@ struct TimerView: View {
             if viewModel.dish?.currentTime != nil || viewModel.dish == nil {
                 isStartView.toggle()
             }
+            viewModel.loadSaveDish()
         }
         .onDisappear {
             viewModel.stopTimer(isTappedButton: false, isScreenDisappears: true)

@@ -46,6 +46,10 @@ final class TimerViewModel: ObservableObject {
     }
     
     // MARK: - Methods
+    func loadSaveDish() {
+        coreDataManager.loadSaveDish()
+    }
+    
     func getGrillTemperatureString()  {
         switch grillTemperature {
         case 1:
@@ -245,6 +249,13 @@ final class TimerViewModel: ObservableObject {
         coreDataManager.successDishSaveSubject
             .sink { [weak self] result in
                 self?.saveFavoriteDishResult = result
+            }
+            .store(in: &cancellables)
+        
+        coreDataManager.userSaveDishSubject
+            .sink { [weak self] dish in
+                self?.dish = dish
+                self?.setupCookingParameters()
             }
             .store(in: &cancellables)
     }
