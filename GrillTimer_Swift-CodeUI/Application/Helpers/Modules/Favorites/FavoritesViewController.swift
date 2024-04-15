@@ -33,7 +33,11 @@ final class FavoritesViewController: UIViewController {
     
     private lazy var searchTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = NSLocalizedString("App.Favorites.SearchTextFieldPlaceholder", comment: "")
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor(resource: .Color.Favorites.meatTypeText)
+        ]
+        let attributedPlaceholder = NSAttributedString(string: NSLocalizedString("App.Favorites.SearchTextFieldPlaceholder", comment: ""), attributes: attributes)
+        textField.attributedPlaceholder = attributedPlaceholder
         textField.layer.cornerRadius = 22.5
         textField.layer.masksToBounds = true
         textField.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
@@ -112,6 +116,7 @@ final class FavoritesViewController: UIViewController {
         configureConstraints()
         bind()
         initialSnapshot()
+        setupKeyboardDismissGesture()
     }
     
     // MARK: - Methods
@@ -183,6 +188,13 @@ final class FavoritesViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
+    private func setupKeyboardDismissGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        collectionView.addGestureRecognizer(tapGesture)
+        view.addGestureRecognizer(tapGesture)
+    }
+    
     @objc private func searchTextFieldDidChange(_ textField: UITextField) {
         viewModel.searchDishes(textField.text ?? "")
     }
@@ -193,5 +205,9 @@ final class FavoritesViewController: UIViewController {
     
     @objc func settingsButtonTapped() {
         viewModel.settingsButtonTapped()
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

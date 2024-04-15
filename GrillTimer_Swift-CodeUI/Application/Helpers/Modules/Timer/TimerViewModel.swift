@@ -1,12 +1,6 @@
-//
-//  TimerViewModel.swift
-//  GrillTimer_Swift-CodeUI
-//
-//  Created by Alexander on 12.04.24.
-//
-
 import UIKit
 import Combine
+import UserNotifications
 
 final class TimerViewModel: ObservableObject {
     
@@ -100,6 +94,12 @@ final class TimerViewModel: ObservableObject {
             }
         }
         isTimerRunning = true
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+            if granted {
+                self.setNotifications()
+            }
+        }
     }
 
     func stopTimer(isTappedButton: Bool, isScreenDisappears: Bool) {
@@ -120,6 +120,7 @@ final class TimerViewModel: ObservableObject {
         }
         
         isTimerRunning = false
+        deleteNotifications()
     }
     
     func changeTimerTime(_ addTimeSeconds: Int) {
@@ -133,6 +134,32 @@ final class TimerViewModel: ObservableObject {
   
         let favoriteDish = DishDTO(id: dish.id, meatType: dish.meatType, dishType: dish.dishType, averageCookingTime: dish.averageCookingTime, cookingTime: dish.cookingTime, favoriteName: favoriteDishName, averageFavoriteCookingTime: cookingTime, sizeMeat: self.sizeMeat, grillTemperature: self.grillTemperature, meatTemperature: self.meatTemperature, isMarinade: self.isMarinade)
         coreDataManager.saveDish(favoriteDish)
+    }
+    
+    func setNotifications() {
+        let content = UNMutableNotificationContent()
+        content.title = NSLocalizedString("App.Timer.NotificationsTitle", comment: "")
+        content.body = NSLocalizedString("App.Timer.NotificationsMessage", comment: "")
+        content.sound = UNNotificationSound.default
+
+        let timeIntervalValue = TimeInterval(remainingSeconds)
+        if timeIntervalValue != 0 {
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeIntervalValue, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: "notificationIdentifier", content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Error: \(error)")
+                } else {
+                    print("Success")
+                }
+            }
+        }
+    }
+    
+    func deleteNotifications() {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["notificationIdentifier"])
     }
  
     private func calculateCookingTime() {

@@ -583,6 +583,40 @@
         }
       }
     },
+    "App.Timer.NotificationsMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your dish is ready!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваше блюдо готово!"
+          }
+        }
+      }
+    },
+    "App.Timer.NotificationsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The timer is stopped!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таймер остановлен!"
+          }
+        }
+      }
+    },
     "App.Timer.PresenceMarinade" : {
       "extractionState" : "manual",
       "localizations" : {

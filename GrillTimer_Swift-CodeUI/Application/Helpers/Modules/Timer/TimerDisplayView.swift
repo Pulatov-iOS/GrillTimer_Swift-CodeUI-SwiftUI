@@ -1,10 +1,3 @@
-//
-//  TimerDisplayView.swift
-//  GrillTimer_Swift-CodeUI
-//
-//  Created by Alexander on 13.04.24.
-//
-
 import SwiftUI
 
 struct TimerDisplayView: View {
