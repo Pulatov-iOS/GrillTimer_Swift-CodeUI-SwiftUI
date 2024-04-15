@@ -25,7 +25,7 @@ final class FavoritesViewController: UIViewController {
         button.setImage(UIImage(systemName: "gearshape"), for: .normal)
         let symbolConfigurationSetup = UIImage.SymbolConfiguration(pointSize: 28)
         button.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
-//        button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         button.backgroundColor = UIColor(resource: .Color.Main.backgroundItem)
         button.layer.cornerRadius = 27.5
         return button
@@ -71,7 +71,12 @@ final class FavoritesViewController: UIViewController {
             (collectionView: UICollectionView, indexPath: IndexPath, item: Dish) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCollectionCell.reuseIdentifier, for: indexPath) as? FavoritesCollectionCell else { return nil }
             cell.setInformation(item)
-            cell.cellTappedPublisher
+            cell.deleteButtonSubject
+                .sink { [weak self] id in
+                    self?.viewModel.deleteFavoriteDish(id: id)
+                }
+                .store(in: &self.cancellables)
+            cell.cellTappedSubject
                 .sink { [weak self] id in
                     self?.viewModel.tableCellTapped(id)
                 }
@@ -107,13 +112,12 @@ final class FavoritesViewController: UIViewController {
         configureConstraints()
         bind()
         initialSnapshot()
-        
-        viewModel.loadDishes()
     }
     
     // MARK: - Methods
     private func configureUI() {
         view.backgroundColor = UIColor(resource: .Color.Main.background)
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func addSubviews() {
@@ -163,6 +167,8 @@ final class FavoritesViewController: UIViewController {
     }
     
     private func bind() {
+        viewModel.loadDishes()
+        
         viewModel.userDishesSubject
             .sink { [weak self] _ in
                 self?.initialSnapshot()
@@ -183,5 +189,9 @@ final class FavoritesViewController: UIViewController {
     
     @objc private func deleteButtonTapped(_ textField: UITextField) {
         viewModel.deleteSearchResults()
+    }
+    
+    @objc func settingsButtonTapped() {
+        viewModel.settingsButtonTapped()
     }
 }

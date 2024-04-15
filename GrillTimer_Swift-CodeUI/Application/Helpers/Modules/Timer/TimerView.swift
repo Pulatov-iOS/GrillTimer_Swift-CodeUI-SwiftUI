@@ -26,7 +26,6 @@ struct TimerView: View {
                 
                 if viewModel.dish != nil {
                     HStack {
-                        
                         if isStartView {
                             Spacer()
                             
@@ -44,7 +43,6 @@ struct TimerView: View {
                             .frame(width: 55, height: 55)
                             .background(Circle().foregroundColor(Color(UIColor(resource: .Color.Main.backgroundItem))))
                             .padding(.trailing, 17)
-                            
                         } else {
                             Button(action: {
                                 isStartView.toggle()
@@ -91,7 +89,7 @@ struct TimerView: View {
             }
             .padding(.top, 17)
             
-            if isStartView && viewModel.dish != nil {
+            if isStartView {
                 SettingsTimerView(isStartView: $isStartView)
             } else {
                 TimerDisplayView(isSaveDish: $isSaveDish)
@@ -101,8 +99,13 @@ struct TimerView: View {
         }
         .background(Color(UIColor(resource: .Color.Main.background)))
         .environmentObject(viewModel)
+        .onAppear {
+            if viewModel.dish?.currentTime != nil || viewModel.dish == nil {
+                isStartView.toggle()
+            }
+        }
         .onDisappear {
-            viewModel.stopTimer()
+            viewModel.stopTimer(isTappedButton: false, isScreenDisappears: true)
         }
     }
 }

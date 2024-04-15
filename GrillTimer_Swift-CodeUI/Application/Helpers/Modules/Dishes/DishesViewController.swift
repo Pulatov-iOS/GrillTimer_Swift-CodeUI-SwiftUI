@@ -148,6 +148,7 @@ final class DishesViewController: UIViewController {
     // MARK: - Methods
     private func configureUI() {
         view.backgroundColor = UIColor(resource: .Color.Main.background)
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func addSubviews() {
@@ -191,6 +192,8 @@ final class DishesViewController: UIViewController {
     }
     
     private func bind() {
+        viewModel.loadSaveDish()
+        
         segmentedControl.addTarget(self, action: #selector(segmentedControlTypeSortingChanged(_:)), for: .valueChanged)
         
         viewModel.dishesSubject.sink { error in
@@ -228,7 +231,7 @@ final class DishesViewController: UIViewController {
     }
     
     @objc func settingsButtonTapped() {
-
+        viewModel.settingsButtonTapped()
     }
     
     @objc func segmentedControlTypeSortingChanged(_ sender: UISegmentedControl) {

@@ -15,7 +15,7 @@ final class CoreDataManager: NSCopying {
     
     // MARK: - Public Properties
     lazy var userDishesSubject = PassthroughSubject<[Dish], Never>()
-    lazy var userSaveDishSubject = PassthroughSubject<[DishSave], Never>()
+    lazy var userSaveDishSubject = PassthroughSubject<DishSaveDTO, Never>()
     let successDishSaveSubject = PassthroughSubject<SaveResult, Never>()
  
     // MARK: - Methods
@@ -40,8 +40,9 @@ final class CoreDataManager: NSCopying {
         
         do {
             let feetchedObject = try managedContext.fetch(feetchRequest)
-            guard let feetchedSaveDish = feetchedObject as? [DishSave] else { return }
-            userSaveDishSubject.send(feetchedSaveDish)
+            guard let feetchedSaveDish = feetchedObject.first as? DishSave else { return }
+            let dishSaveDTO = DishSaveDTO(dishSave: feetchedSaveDish)
+            userSaveDishSubject.send(dishSaveDTO)
         } catch {
             return
         }
@@ -61,7 +62,8 @@ final class CoreDataManager: NSCopying {
         
         let curDish = NSManagedObject(entity: currancyDishEntity, insertInto: managedContext)
 
-        curDish.setValue(dish.id, forKey: "id")
+        let dishID = UUID()
+        curDish.setValue(dishID.uuidString, forKey: "id")
         curDish.setValue(dish.meatType, forKey: "meatType")
         curDish.setValue(dish.dishType, forKey: "dishType")
         curDish.setValue(dish.averageCookingTime, forKey: "averageCookingTime")
@@ -111,13 +113,35 @@ final class CoreDataManager: NSCopying {
         curDish.setValue(dish.meatTemperature, forKey: "meatTemperature")
         curDish.setValue(dish.isMarinade, forKey: "isMarinade")
         curDish.setValue(dish.currentTime, forKey: "currentTime")
+        curDish.setValue(dish.remainingTimeSeconds, forKey: "remainingTimeSeconds")
         
         do {
             try managedContext.save()
-            loadSaveDish()
         } catch {
             return
         }
+    }
+    
+    func deleteDish(id: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Dish> = Dish.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+
+        do {
+            let dishes = try managedContext.fetch(fetchRequest)
+            
+            for dish in dishes {
+                managedContext.delete(dish)
+            }
+            try managedContext.save()
+        } catch {
+            return
+        }
+        
+        loadDishes()
     }
     
     func deleteAllDishSaves() {

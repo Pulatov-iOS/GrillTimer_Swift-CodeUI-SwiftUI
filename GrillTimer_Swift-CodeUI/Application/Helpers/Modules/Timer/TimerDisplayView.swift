@@ -99,7 +99,7 @@ struct TimerDisplayView: View {
                     VStack {
                         Button(action: {
                             if viewModel.isTimerRunning {
-                                viewModel.stopTimer()
+                                viewModel.stopTimer(isTappedButton: true, isScreenDisappears: false)
                             } else {
                                 viewModel.startTimer()
                             }
@@ -138,7 +138,9 @@ struct TimerDisplayView: View {
                             return Text(NSLocalizedString("App.TimerDisplay. AlertMessage.Error", comment: ""))
                         }
                     }(),
-                    dismissButton: .default(Text(NSLocalizedString("App.TimerDisplay. AlertButton", comment: "")))
+                    dismissButton: .default(Text(NSLocalizedString("App.TimerDisplay. AlertButton", comment: "")), action: {
+                        viewModel.saveFavoriteDishResult = .none
+                      })
                 )
             }
         }

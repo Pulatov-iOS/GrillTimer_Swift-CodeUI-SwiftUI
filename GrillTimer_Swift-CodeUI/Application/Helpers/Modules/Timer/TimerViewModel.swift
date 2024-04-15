@@ -12,7 +12,7 @@ final class TimerViewModel: ObservableObject {
     
     // MARK: - Public Properties
     @Published var grillTemperatureString: String = NSLocalizedString("App.Timer.GrillTemperature.Middle", comment: "")
-    @Published var dish: DishDTO?
+    @Published var dish: DishSaveDTO?
     @Published var cookingTime: Int = 0 {
         didSet {
             remainingSeconds = cookingTime * 60
@@ -32,7 +32,7 @@ final class TimerViewModel: ObservableObject {
     @Published var saveFavoriteDishResult: SaveResult = .none
     
     // MARK: - Private Properties
-    private var coreDataManager: CoreDataManager
+    private let coreDataManager: CoreDataManager
     private var timer: Timer?
     private var remainingSeconds = 0 {
         didSet {
@@ -42,7 +42,8 @@ final class TimerViewModel: ObservableObject {
     }
     private var cancellables = Set<AnyCancellable>()
     
-    init(dish: DishDTO?, coreDataManager: CoreDataManager) {
+    // MARK: - Init
+    init(dish: DishSaveDTO?, coreDataManager: CoreDataManager) {
         self.dish = dish
         self.coreDataManager = coreDataManager
         
@@ -95,17 +96,30 @@ final class TimerViewModel: ObservableObject {
                 remainingSeconds -= 1
                 self.remainingTime = secondsToTimeString(remainingSeconds)
             } else {
-                self.stopTimer()
+                self.stopTimer(isTappedButton: false, isScreenDisappears: false)
             }
         }
         isTimerRunning = true
     }
 
-    func stopTimer() {
+    func stopTimer(isTappedButton: Bool, isScreenDisappears: Bool) {
         timer?.invalidate()
-        isTimerRunning = false
         
-        // сохранить
+        if isTimerRunning && isScreenDisappears  {
+            guard let dish = dish else {
+                isTimerRunning = false
+                return
+            }
+
+            let dishSaveDTO = DishSaveDTO(id: dish.id, meatType: dish.meatType, dishType: dish.dishType, averageCookingTime: dish.averageCookingTime, cookingTime: dish.cookingTime, favoriteName: "", averageFavoriteCookingTime: cookingTime, sizeMeat: self.sizeMeat, grillTemperature: self.grillTemperature, meatTemperature: self.meatTemperature, isMarinade: self.isMarinade, currentTime: Date(), remainingTimeSeconds: remainingSeconds)
+            coreDataManager.saveStartTimerDish(dishSaveDTO)
+        }
+        
+        if isTappedButton {
+            coreDataManager.deleteAllDishSaves()
+        }
+        
+        isTimerRunning = false
     }
     
     func changeTimerTime(_ addTimeSeconds: Int) {
@@ -116,7 +130,7 @@ final class TimerViewModel: ObservableObject {
     
     func saveCurrentDish(_ favoriteDishName: String) {
         guard let dish = dish else { return }
-            
+  
         let favoriteDish = DishDTO(id: dish.id, meatType: dish.meatType, dishType: dish.dishType, averageCookingTime: dish.averageCookingTime, cookingTime: dish.cookingTime, favoriteName: favoriteDishName, averageFavoriteCookingTime: cookingTime, sizeMeat: self.sizeMeat, grillTemperature: self.grillTemperature, meatTemperature: self.meatTemperature, isMarinade: self.isMarinade)
         coreDataManager.saveDish(favoriteDish)
     }
@@ -174,14 +188,30 @@ final class TimerViewModel: ObservableObject {
             cookingTime = 10
             return
         }
+        
         cookingTime = dish.averageCookingTime
-
+        
         if let favoriteName = dish.favoriteName {
             sizeMeat = dish.sizeMeat ?? 4
             grillTemperature = dish.grillTemperature ?? 2
             meatTemperature = dish.meatTemperature ?? 20
             isMarinade = dish.isMarinade ?? false
         }
+        
+        if dish.currentTime != nil {
+            remainingTimeInSeconds()
+            startTimer()
+        }
+    }
+    
+    private func remainingTimeInSeconds() {
+        let cookingTimeInSeconds = dish?.remainingTimeSeconds ?? 0
+        let currentTime = Date()
+        
+        let timeElapsedInSeconds = Int(currentTime.timeIntervalSince(dish?.currentTime ?? Date()))
+        let remainingTimeInSeconds = cookingTimeInSeconds - timeElapsedInSeconds
+        
+        remainingSeconds = max(0, remainingTimeInSeconds)
     }
     
     private func bind() {

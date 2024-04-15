@@ -3,14 +3,16 @@ import Combine
 final class FavoritesViewModel {
     
     // MARK: - Public properties
-    var showTimerScreen: ((DishDTO) -> Void)?
+    var showTimerScreen: ((DishSaveDTO) -> Void)?
+    var showSettingsScreen: (() -> Void)?
     let userDishesSubject = CurrentValueSubject<[Dish], Never>([])
     
     // MARK: - Private properties
     private var fullUserDishes: [Dish] = []
-    private var coreDataManager: CoreDataManager
+    private let coreDataManager: CoreDataManager
     private var cancellables = Set<AnyCancellable>()
     
+    // MARK: - Init
     init(coreDataManager: CoreDataManager) {
         self.coreDataManager = coreDataManager
         
@@ -41,14 +43,23 @@ final class FavoritesViewModel {
         userDishesSubject.send(fullUserDishes)
     }
     
+    func deleteFavoriteDish(id: String) {
+        coreDataManager.deleteDish(id: id)
+    }
+    
     func tableCellTapped(_ dishId: String) {
         if let dish = fullUserDishes.first(where: { $0.id == dishId }) {
             let dishDTO = DishDTO(dish: dish)
-            showTimerScreen?(dishDTO)
+            let dishSaveDTO = DishSaveDTO(dish: dishDTO)
+            showTimerScreen?(dishSaveDTO)
         }
     }
     
-    private func bind() {
+    func settingsButtonTapped(){
+        showSettingsScreen?()
+    }
+    
+    private func bind() {        
         coreDataManager.userDishesSubject
             .sink { dishes in
                 self.userDishesSubject.send(dishes)

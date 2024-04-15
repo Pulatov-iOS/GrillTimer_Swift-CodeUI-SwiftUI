@@ -14,11 +14,16 @@ struct DishSaveDTO: Codable, Hashable {
     var grillTemperature: Int?
     var meatTemperature: Int?
     var isMarinade: Bool?
-    var currentTime: Date
+    var currentTime: Date?
+    var remainingTimeSeconds: Int?
 }
 
 extension DishSaveDTO {
-    init(dish: Dish) {
-        self.init(id: dish.id, meatType: dish.meatType ?? "", dishType: dish.dishType ?? "", averageCookingTime: Int(dish.averageCookingTime), cookingTime: dish.cookingTime ?? "", favoriteName: dish.favoriteName, averageFavoriteCookingTime: Int(dish.averageFavoriteCookingTime), sizeMeat: Int(dish.sizeMeat), grillTemperature: Int(dish.grillTemperature), meatTemperature: Int(dish.meatTemperature), isMarinade: dish.isMarinade, currentTime: Date())
+    init(dish: DishDTO) {
+        self.init(id: dish.id, meatType: dish.meatType ?? "", dishType: dish.dishType ?? "", averageCookingTime: dish.averageCookingTime, cookingTime: dish.cookingTime ?? "", favoriteName: dish.favoriteName, averageFavoriteCookingTime: dish.averageFavoriteCookingTime, sizeMeat: dish.sizeMeat, grillTemperature: dish.grillTemperature, meatTemperature: dish.meatTemperature, isMarinade: dish.isMarinade)
+    }
+    
+    init(dishSave: DishSave) {
+        self.init(id: dishSave.id, meatType: dishSave.meatType ?? "", dishType: dishSave.dishType ?? "", averageCookingTime: Int(dishSave.averageCookingTime), cookingTime: dishSave.cookingTime ?? "", favoriteName: dishSave.favoriteName, averageFavoriteCookingTime: Int(dishSave.averageFavoriteCookingTime), sizeMeat: Int(dishSave.sizeMeat), grillTemperature: Int(dishSave.grillTemperature), meatTemperature: Int(dishSave.meatTemperature), isMarinade: dishSave.isMarinade, currentTime: dishSave.currentTime, remainingTimeSeconds: Int(dishSave.remainingTimeSeconds))
     }
 }
