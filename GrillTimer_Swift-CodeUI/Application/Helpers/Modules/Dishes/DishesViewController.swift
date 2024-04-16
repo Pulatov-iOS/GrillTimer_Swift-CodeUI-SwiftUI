@@ -26,7 +26,6 @@ final class DishesViewController: UIViewController {
     var viewModel: DishesViewModel!
     
     // MARK: Private Properties
-    private var cancellables = Set<AnyCancellable>()
     private let sectionHeaderTitles: [AnyHashable: String] = [
         DishType.skewers: NSLocalizedString("App.Dishes.Dish.Skewers", comment: ""),
         DishType.steak: NSLocalizedString("App.Dishes.Dish.Steak", comment: ""),
@@ -42,6 +41,7 @@ final class DishesViewController: UIViewController {
         MeatType.lamb: NSLocalizedString("App.Dishes.Meat.Lamb", comment: ""),
         MeatType.turkey: NSLocalizedString("App.Dishes.Meat.Turkey", comment: ""),
     ]
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - UI Properties
     private let titleLabel: UILabel = {
@@ -82,8 +82,9 @@ final class DishesViewController: UIViewController {
         let collection = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
         collection.backgroundColor = .clear
         collection.showsVerticalScrollIndicator = false
+        collection.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 120, right: 0)
         collection.register(DishesCollectionCell.self, forCellWithReuseIdentifier: "DishesCollectionCell")
-        collection.register(DishHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "DishHeaderView")
+        collection.register(DishesHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "DishesHeaderView")
         return collection
     }()
     
@@ -92,11 +93,16 @@ final class DishesViewController: UIViewController {
             (collectionView: UICollectionView, indexPath: IndexPath, item: DishDTO) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishesCollectionCell.reuseIdentifier, for: indexPath) as? DishesCollectionCell else { return nil }
             cell.setInformation(item, sortingType: self.viewModel.currentSortingSubject.value)
+            cell.cellTappedPublisher
+                .sink { [weak self] id in
+                    self?.viewModel.tableCellTapped(id)
+                }
+                .store(in: &self.cancellables)
             return cell
         }
         
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DishHeaderView", for: indexPath) as? DishHeaderView else { fatalError("") }
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DishesHeaderView", for: indexPath) as? DishesHeaderView else { fatalError("") }
             let sectionIdentifier = dataSource.snapshot().sectionIdentifiers[indexPath.section]
             if let dishType = sectionIdentifier as? DishType {
                 let sectionType = self.sectionHeaderTitles[dishType] ?? ""
@@ -142,6 +148,7 @@ final class DishesViewController: UIViewController {
     // MARK: - Methods
     private func configureUI() {
         view.backgroundColor = UIColor(resource: .Color.Main.background)
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func addSubviews() {
@@ -185,6 +192,8 @@ final class DishesViewController: UIViewController {
     }
     
     private func bind() {
+        viewModel.loadSaveDish()
+        
         segmentedControl.addTarget(self, action: #selector(segmentedControlTypeSortingChanged(_:)), for: .valueChanged)
         
         viewModel.dishesSubject.sink { error in
@@ -222,7 +231,7 @@ final class DishesViewController: UIViewController {
     }
     
     @objc func settingsButtonTapped() {
-
+        viewModel.settingsButtonTapped()
     }
     
     @objc func segmentedControlTypeSortingChanged(_ sender: UISegmentedControl) {

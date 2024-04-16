@@ -1,9 +1,15 @@
 import UIKit
+import Combine
 
 final class FavoritesCollectionCell: UICollectionViewCell {
     
     // MARK: - Public Properties
+    var deleteButtonSubject = PassthroughSubject<String, Never>()
+    var cellTappedSubject = PassthroughSubject<String, Never>()
     static let reuseIdentifier = "FavoritesCollectionCell"
+    
+    // MARK: - Private Properties
+    private var dishId: String?
     
     // MARK: - UI Properties
     private let containerView: UIView = {
@@ -19,7 +25,7 @@ final class FavoritesCollectionCell: UICollectionViewCell {
     
     private let timerImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(resource: .Image.TabBar.centerItemDisabled)
+        image.image = UIImage(resource: .Image.Timer.timer)
         image.contentMode = .scaleAspectFit
         return image
     }()
@@ -53,12 +59,20 @@ final class FavoritesCollectionCell: UICollectionViewCell {
         return label
     }()
     
+    private let deleteButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "trash")?.resized(to: CGSize(width: 40, height: 40)), for: .normal)
+        button.tintColor = UIColor(resource: .Color.Main.button)
+        return button
+    }()
+    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubviews()
         configureConstraints()
+        bind()
     }
     
     required init?(coder: NSCoder) {
@@ -67,27 +81,28 @@ final class FavoritesCollectionCell: UICollectionViewCell {
     
     // MARK: - Methods
     private func addSubviews() {
-        contentView.addSubview(containerView)
+        contentView.addSubviews([containerView, deleteButton])
         containerView.addSubviews([nameFavoriteDishLabel, timerImage, dishTypeLabel, meatTypeLabel, cookingTimeLabel])
     }
     
     private func configureConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().offset(10)
-            make.leading.trailing.equalToSuperview().inset(24)
+            make.leading.equalToSuperview().offset(24)
+            make.width.equalTo(345)
         }
         
         timerImage.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
-            make.centerY.equalToSuperview().offset(-3)
-            make.width.equalTo(35)
-            make.height.equalTo(35)
+            make.centerY.equalToSuperview()
+            make.width.equalTo(31)
+            make.height.equalTo(31)
         }
         
         nameFavoriteDishLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
             make.leading.equalToSuperview().offset(60)
-            make.trailing.equalTo(cookingTimeLabel.snp.leading).offset(-5)
+            make.width.equalTo(180)
         }
         
         dishTypeLabel.snp.makeConstraints { make in
@@ -104,15 +119,69 @@ final class FavoritesCollectionCell: UICollectionViewCell {
             make.trailing.equalToSuperview().inset(24)
             make.centerY.equalToSuperview()
         }
+        
+        deleteButton.snp.makeConstraints { make in
+            make.trailing.equalTo(containerView.snp.trailing).offset(66)
+            make.centerY.equalToSuperview().offset(10)
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+        }
     }
     
+    private func bind() {
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(leftSwipe(_:)))
+        addGestureRecognizer(panGestureRecognizer)
+        
+        deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
+        containerView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func leftSwipe(_ gesture: UIPanGestureRecognizer) {
+        guard let superview = superview else { return }
+                
+        switch gesture.state {
+        case .changed:
+            let translation = gesture.translation(in: superview)
+            let newX = frame.origin.x + translation.x
+            let limitedX = min(max(newX, -80), 0)
+            frame.origin.x = limitedX
+            gesture.setTranslation(.zero, in: superview)
+            
+        case .ended:
+            if frame.origin.x > -40 {
+                UIView.animate(withDuration: 0.3) {
+                    self.frame.origin.x = 0
+                }
+            } else {
+                UIView.animate(withDuration: 0.3) {
+                    self.frame.origin.x = -80
+                }
+            }
+            
+        default:
+            break
+        }
+    }
+    
+    @objc private func deleteButtonTapped() {
+        deleteButtonSubject.send(dishId ?? "")
+    }
+    
+    @objc private func cellTapped() {
+        cellTappedSubject.send(dishId ?? "")
+    }
+       
     func setInformation(_ dish: Dish) {
-        if let name = dish.favoriteName, let time = dish.cookingTime {
+        if let name = dish.favoriteName {
             nameFavoriteDishLabel.text = name
-            cookingTimeLabel.text = time + " " + NSLocalizedString("App.Favorites.CollectionCell.UnitCookingTime", comment: "")
+            cookingTimeLabel.text = "\(dish.averageFavoriteCookingTime)" + " " + NSLocalizedString("App.Favorites.CollectionCell.UnitCookingTime", comment: "")
         }
         
         dishTypeLabel.text = dish.dishType
         meatTypeLabel.text = dish.meatType
+        
+        dishId = dish.id
     }
 }

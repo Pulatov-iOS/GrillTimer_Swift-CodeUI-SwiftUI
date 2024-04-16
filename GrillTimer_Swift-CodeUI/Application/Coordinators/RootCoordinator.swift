@@ -2,6 +2,9 @@ import UIKit
 
 final class RootCoordinator {
     
+    // MARK: - Public Properties
+    var isFirstStart: Bool
+    
     // MARK: - Private Properties
     private let window: UIWindow
     private let initialNavigationController = UINavigationController()
@@ -14,12 +17,13 @@ final class RootCoordinator {
 
     init(window: UIWindow) {
         self.window = window
+        isFirstStart = true
     }
 
     func start() {
         tabBar.delegate = self
         
-        dishesCoordinator = DishesCoordinator(navigationController: initialNavigationController, tabBar: tabBar)
+        dishesCoordinator = DishesCoordinator(rootCoordinator: self, navigationController: initialNavigationController, tabBar: tabBar)
         timerCoordinator = TimerCoordinator(navigationController: initialNavigationController)
         favoritesCoordinator = FavoritesCoordinator(navigationController: initialNavigationController, tabBar: tabBar)
 
@@ -45,7 +49,7 @@ extension RootCoordinator: TabBarItemDelegate {
     func centerItemTapped(_ cell: TabBarItem) {
         if let coordinator = timerCoordinator {
             selectedTabBarItem = .center
-            coordinator.start()
+            coordinator.start(dish: nil)
         }
     }
     

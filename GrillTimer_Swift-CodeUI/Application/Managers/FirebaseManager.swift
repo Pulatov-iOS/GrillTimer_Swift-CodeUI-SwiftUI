@@ -24,7 +24,7 @@ final class FirebaseManager: NSCopying {
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
     
-    
+    // MARK: - Methods
     func fetchDishes() {
         let listener = self.db.collection(FirebaseKeys.pathDishes).addSnapshotListener { (snapshot, error) in
             if let error = error {

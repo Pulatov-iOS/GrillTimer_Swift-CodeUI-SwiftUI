@@ -1,6 +1,18 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
+    "-" : {
+
+    },
+    "%lld °C" : {
+
+    },
+    "+" : {
+
+    },
     "Add.Timer.SizeMeat" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -71,6 +83,9 @@
           }
         }
       }
+    },
+    "App.Dishes.Dish.(viewModel.dish?.dishType.prefix(1).capitalized ?? \"\")(viewModel.dish?.dishType.dropFirst() ?? \"\")" : {
+
     },
     "App.Dishes.Dish.Kebab" : {
       "extractionState" : "manual",
@@ -190,6 +205,9 @@
           }
         }
       }
+    },
+    "App.Dishes.Meat.(viewModel.dish?.meatType.prefix(1).capitalized ?? \"\")(viewModel.dish?.meatType.dropFirst() ?? \"\")" : {
+
     },
     "App.Dishes.Meat.Beef" : {
       "extractionState" : "manual",
@@ -378,6 +396,159 @@
         }
       }
     },
+    "App.Settings.ItemPrivacyPolicy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy policy"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Политика конфиденциальности"
+          }
+        }
+      }
+    },
+    "App.Settings.ItemTermsOfUse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Условия использования"
+          }
+        }
+      }
+    },
+    "App.Settings.NavigationItemTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        }
+      }
+    },
+    "App.Timer.GrillTemperature" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grill temperature"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Температура гриля"
+          }
+        }
+      }
+    },
+    "App.Timer.GrillTemperature.High" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "High"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Высокая"
+          }
+        }
+      }
+    },
+    "App.Timer.GrillTemperature.Low" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Low"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Низкая"
+          }
+        }
+      }
+    },
+    "App.Timer.GrillTemperature.Middle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Middle"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Средняя"
+          }
+        }
+      }
+    },
+    "App.Timer.MeatTemperature" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meat temperature"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Температура мяса"
+          }
+        }
+      }
+    },
+    "App.Timer.Min" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мин"
+          }
+        }
+      }
+    },
     "App.Timer.NavigationTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -391,6 +562,227 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Таймер"
+          }
+        }
+      }
+    },
+    "App.Timer.No" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Нет"
+          }
+        }
+      }
+    },
+    "App.Timer.NotificationsMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your dish is ready!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваше блюдо готово!"
+          }
+        }
+      }
+    },
+    "App.Timer.NotificationsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The timer is stopped!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таймер остановлен!"
+          }
+        }
+      }
+    },
+    "App.Timer.PresenceMarinade" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presence of marinade"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наличие маринада"
+          }
+        }
+      }
+    },
+    "App.Timer.StartButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Старт"
+          }
+        }
+      }
+    },
+    "App.Timer.StopButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стоп"
+          }
+        }
+      }
+    },
+    "App.Timer.Yes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Да"
+          }
+        }
+      }
+    },
+    "App.TimerDisplay. AlertButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ок"
+          }
+        }
+      }
+    },
+    "App.TimerDisplay. AlertMessage.Error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error While Saving Dish!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка при сохранении блюда!"
+          }
+        }
+      }
+    },
+    "App.TimerDisplay. AlertMessage.Success" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dish Successfully Saved!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блюдо успешно сохранено!"
+          }
+        }
+      }
+    },
+    "App.TimerDisplay.AlertTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Result"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Результат сохранения"
+          }
+        }
+      }
+    },
+    "App.TimerDisplay.SaveButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
+          }
+        }
+      }
+    },
+    "App.TimerDisplay.TextFieldPlaceholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter dish name..."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите имя блюда..."
           }
         }
       }
